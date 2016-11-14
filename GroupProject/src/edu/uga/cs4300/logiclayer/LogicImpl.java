@@ -1,0 +1,50 @@
+package edu.uga.cs4300.logiclayer;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import edu.uga.cs4300.objectlayer.Game;
+import edu.uga.cs4300.persistlayer.PersistImpl;
+
+public class LogicImpl {
+	
+		HttpServletRequest request=null;
+		HttpServletResponse response=null;
+		PersistImpl persist= null;
+		ArrayList<Game> gameList = new ArrayList<Game>();
+		
+		public LogicImpl(HttpServletRequest req, HttpServletResponse res){
+			request = req;
+			response= res;
+			persist = new PersistImpl();
+		} //constructor
+		
+		public ArrayList<Game> getAllGames(){
+			//get the result sets
+			ResultSet games = persist.getGames();
+			
+			try {
+				while(games.next()){
+					Game gm = new Game();
+					gm.setDate(games.getInt("release_date"));
+					gm.setDescript(games.getString("description"));
+					gm.setDev(games.getString("developer"));
+					gm.setImage(games.getString("img"));
+					gm.setName(games.getString("name"));
+					gm.setPrice(games.getInt("price"));
+					gm.setPub(games.getString("publisher"));
+					gm.setStock(games.getInt("stock"));
+					gameList.add(gm);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return gameList;
+		}
+}
