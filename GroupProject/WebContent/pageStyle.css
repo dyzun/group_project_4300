@@ -1,0 +1,104 @@
+body {
+    background-color:darkgray;
+}
+
+div.elements {
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 100px;
+    background-color: white;
+}
+
+
+#main {
+    height: 200px;
+    width: 70%;
+    float: left;
+    margin: 10px;
+
+}
+
+#login{
+    float: right;
+    width:25%;
+    margin:10px;
+
+}
+
+
+
+nav ul {
+    list-style-type: none;
+    background-color: #333;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+nav ul li {
+    float: left;
+    background-color: #333;
+    
+}
+
+nav ul li a {
+    display: block;
+    text-decoration: none;
+    color:white;
+    padding: 15px 17px;
+}
+
+nav ul li a:hover {
+    background-color: #111;
+    color: white;
+}
+
+nav {
+    clear: both;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+aside {
+    float:left;
+    margin: 10px;
+    width:20%;
+    font-size: 15pt;
+    
+}
+#gameInfo {
+    float:right;
+    margin-right: 500px;
+    line-height: 130%;
+}
+
+aside ul{
+    list-style-type: none;
+}
+
+aside ul li a {
+    text-decoration: none;
+}
+
+aside ul li a:hover {
+    color:red;
+}
+
+article {
+    float:right;
+    margin:10px;
+    width:75%;
+}
+
+footer {
+    clear:both;
+}
+
+
+
+
+
+
+
