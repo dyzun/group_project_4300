@@ -10,15 +10,40 @@ public class PersistImpl {
 	DbAccessImpl access= new DbAccessImpl();
 	Connection con = access.connect();
 	
-	//set up the queries
-	String games = "SELECT * FROM games";
-	
 	public ResultSet getGames(){
+		String games = "SELECT * FROM games";
 		ResultSet rs = access.retrieve(con, games);
 		return rs;
 	}//getGames
 	
+	public ResultSet getUser(){
+		String user = "SELECT * FROM user";
+		ResultSet rs = access.retrieve(con,user);
+		return rs;
+	}//getReviews
 	
+	public ResultSet getCart(int user_id){
+		String cart = "SELECT * FROM cart WHERE user_id = " +user_id;
+		ResultSet rs = access.retrieve(con, cart);
+		return rs;
+	}//getCart
 	
+	public ResultSet getGenre(int game_id){
+		String genre = "SELECT * FROM game_genre WHERE game_id = " +game_id;
+		ResultSet rs = access.retrieve(con, genre);
+		return rs;
+	}//getGenre
 	
+	public ResultSet getConsoles(int game_id){
+		String console = "SELECT * FROM game_consule WHERE game_id = " +game_id;
+		ResultSet rs = access.retrieve(con,console);
+		return rs;
+	}//getConsoles
+	
+	public ResultSet getReviews(int game_id){
+		String reviews = "SELECT * FROM game_reviews WHERE game_id = " +game_id;
+		ResultSet rs = access.retrieve(con,reviews);
+		return rs;
+	}//getReviews
+		
 }
