@@ -1,4 +1,4 @@
-BraintreeGateway gateway = new BraintreeGateway(useYourAccessToken);
+BraintreeGateway gateway = new BraintreeGateway(access_token$sandbox$4j2hmffnr4z4pssv$4146d6a0d65879c42ad9a9979e3480ca);
 
 TransactionRequest request = new TransactionRequest().
     amount(request.queryParams("amount")).
@@ -6,7 +6,7 @@ TransactionRequest request = new TransactionRequest().
     paymentMethodNonce(request.queryParams("paymentMethodNonce")).
     orderId("Mapped to PayPal Invoice Number").
     descriptor().
-      name("Descriptor displayed in customer CC statements. 22 char max").
+      name("GamesFromHSARO").
       done();
     shippingAddress().
         .firstName("Jen")//TODO CHANGE BASED ON USER
