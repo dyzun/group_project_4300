@@ -16,6 +16,7 @@ public class LogicImpl {
 		HttpServletResponse response=null;
 		PersistImpl persist= null;
 		ArrayList<Game> gameList = new ArrayList<Game>();
+		ArrayList<Review> reviewList = new ArrayList<Review>();
 		
 		public LogicImpl(HttpServletRequest req, HttpServletResponse res){
 			request = req;
@@ -116,4 +117,22 @@ public class LogicImpl {
 			return gameList;
 		}//getGamesByConsole
 		
+		public ArrayList<Review> getReviewsByGame(int game_id){
+			//get the result sets
+			ResultSet reviews = persist.getReviews(game_id);
+			
+			try {
+				while(reviews.next()){
+					Review rv = new Review();
+					rv.setScore(reviews.getInt("score"));
+					rv.setReview(reviews.getString("review"));
+					//TODO need to setUser
+					reviewList.add(rv);
+				}//while
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return reviewList;
+		}//getReviewsByGame
 }
