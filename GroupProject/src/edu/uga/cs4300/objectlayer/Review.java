@@ -13,4 +13,25 @@ public class Review {
 			return review;
 		}
 		
+		public void setUser(int uid){
+			user_id = uid;
+		}
+		public void getUser(){
+			return User_id;
+		}
+		
+		public void setGame(int gid){
+			game_id = gid;
+		}
+		public void getGame(){
+			return game_id;
+		}
+		
+		public void setScore(int sr){
+			score = sr;
+		}
+		public void getScore(){
+			return score;
+		}
+		
 }//review
