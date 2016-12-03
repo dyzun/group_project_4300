@@ -4,7 +4,9 @@
 <link rel="stylesheet" href="style.css">
 <script src="https://js.braintreegateway.com/web/3.6.0/js/client.min.js"></script>
 <script src="https://js.braintreegateway.com/web/3.6.0/js/paypal.min.js"></script>
-<script src="https://www.paypalobjects.com/api/checkout.js"
+<script src="https://www.paypalobjects.com/api/checkout.js"</script>
+<script src="https://www.paypalobjects.com/api/checkout.js"</script>
+	data-version-4></script>
 	data-version-4></script>
 </head>
 
@@ -19,14 +21,14 @@
 				<div id="login">
 					Username: <input type="text" name="username"> <br />
 					Password: <input type="text" name="password"><br /> <input
-						type="submit" value="Login" id="login"/>
+						type="submit" value="Login" id="login" />
 				</div>
 			</form>
 
 		</header>
 
 		<nav>
-            <ul id="consoleSelect">
+			<ul id="consoleSelect">
 				<li><a href="#news">PS4</a></li>
 				<li><a href="#news">XONE</a></li>
 				<li><a href="#news">Xbox 360</a></li>
@@ -38,7 +40,7 @@
 
 		<aside>
 			Select By Genre:
-            <ul id="genreSelect">
+			<ul id="genreSelect">
 				<li><a href="#news">Action</a></li>
 				<li><a href="#news">Adventure</a></li>
 				<li><a href="#news">RPG</a></li>
@@ -62,44 +64,17 @@
 				<button type="button" id="purchase">Add to Cart!</button>
 				<div id="paypal-button"></div>
 
-				<script src="https://www.paypalobjects.com/api/checkout.js"
-					data-version-4></script>
-
-				<script>
-					paypal.Button.render({
-
-						env : 'sandbox', // Optional: specify 'sandbox' environment
-
-						client : {
-							sandbox : 'ARq4fCr-_83GaSDXGBueKliAEeYU-feHIyRAI-NxxzZTIK4m8WWSO6R8iBysag-KGg_p5_vjNaK-JEjU',
-							production : 'xxxxxxxxx'
-						},
-
-						payment : function() {
-
-							var env = this.props.env;
-							var client = this.props.client;
-
-							return paypal.rest.payment.create(env, client, {
-								transactions : [ {
-									amount : {
-										total : '1.00',
-										currency : 'USD'
-									}
-								//TODO change to game price when dynamically generated
-								} ]
-							});
-						},
-
-						commit : true, // Optional: show a 'Pay Now' button in the checkout flow
-
-						onAuthorize : function(data, actions) {
-							return actions.payment.execute().then(function() {
-								// Show a success page to the buyer
-							});
-						}
-					}, '#paypal-button');
-				</script>
+				<!-- <script src="https://www.paypalobjects.com/api/button.js?"
+     			data-merchant="braintree"
+     			data-id="paypal-button"
+     			data-button="checkout"
+     			data-color="gold"
+     			data-size="medium"
+     			data-shape="pill"
+     			data-button_type="submit"
+     			data-button_disabled="false"
+ 				></script>
+				-->
 			</div>
 			<br />
 			<div>
