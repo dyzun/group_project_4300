@@ -14,9 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.uga.cs4300.logiclayer.LogicImpl;
 
-
-
-
 /**
  * Servlet implementation class imdbServlet
  */
