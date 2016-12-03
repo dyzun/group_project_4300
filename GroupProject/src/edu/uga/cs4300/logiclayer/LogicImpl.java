@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.uga.cs4300.objectlayer.Game;
 import edu.uga.cs4300.objectlayer.Review;
-import edu.uga.cs4300.objectlayer.User
+import edu.uga.cs4300.objectlayer.User;
 import edu.uga.cs4300.persistlayer.PersistImpl;
 
 public class LogicImpl {
@@ -26,7 +26,25 @@ public class LogicImpl {
 		response= res;
 		persist = new PersistImpl();
 	} //constructor
-
+        
+        
+        public void checkLoginInfo(String username, String password){
+            ResultSet info = persist.getUserForSignIn(username, password);
+            
+            try{
+                    while(info.next()){
+                        User us = new User();
+                        us.setUsername(info.getString(username));
+                    }
+            }
+             catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+            
+        }
+        
+        
 	public ArrayList<Game> getAllGames(){
 		//get the result sets
 		ResultSet games = persist.getGames();
