@@ -34,6 +34,13 @@ public class PersistImpl {
 		ResultSet rs = access.retrieve(con,user);
 		return rs;
 	}//getUser
+        
+        public ResultSet getUserForSignIn(String user, String pass){
+                String query = "SELECT 1 FROM user WHERE username = '"+user+"' AND password = '"+pass+"'";
+                ResultSet rs = access.retrieve(con, query);
+                return rs;
+        }//getUser for login
+        
 	
 	public ResultSet getCart(int user_id){
 		String cart = "SELECT * FROM cart WHERE user_id = " +user_id;
@@ -61,7 +68,7 @@ public class PersistImpl {
 	
 	public void addReview(int game_id,String review,int user_id,int score){
 		String reviews = "INSERT INTO `project_group`.`game_reviews`(`game_id`,`review`,"
-				+ "`user_id`,`score`) VALUES ("+game_id+","+review+","
+				+ "`user_id`,`score`) VALUES ("+game_id+",'"+review+"',"
 				+user_id+","+score+");";
 		int update = access.update(con,reviews);
 	}//getReviews
