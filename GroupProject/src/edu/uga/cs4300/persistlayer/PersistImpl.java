@@ -5,14 +5,12 @@ import java.sql.ResultSet;
 
 
 public class PersistImpl {
-	//TODO TEST FOR GIT
 	//open connection
 	DbAccessImpl access= new DbAccessImpl();
 	Connection con = access.connect();
 	
 	public ResultSet getGames(){
 		String games = "SELECT * FROM games";
-                String test ="TEST FOR GIT";
 		ResultSet rs = access.retrieve(con, games);
 		return rs;
 	}//getGames
@@ -28,6 +26,15 @@ public class PersistImpl {
 		ResultSet rs = access.retrieve(con,user);
 		return rs;
 	}//getUser
+        
+        public void addUser(String username,String email,String password, String address,
+                String city, int zip_code, String state){
+            String user = "INSERT INTO `project_group`.`user`(`username`,`email`,"
+                    + "`password`,`address`,`city`,`zip_code`,`state`) VALUES ("
+                    + "'"+username+"', '"+email+"', '"+password+"', '"+address+"',"
+                    + "'"+city+"', " + zip_code+ ",'"+state+"')";
+            int update = access.update(con,user);
+        }
 	
 	public ResultSet getUserById(int user_id){
 		String user = "SELECT * FROM user WHERE id = " + user_id;
