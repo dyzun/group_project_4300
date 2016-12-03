@@ -146,8 +146,19 @@ public class LogicImpl {
 					rv.setScore(reviews.getInt("score"));
 					rv.setReview(reviews.getString("review"));
 					//TODO need to setUser
+					try{
+						while(users.next()){
+							User us = new User();
+							if(us.getUser_id() == reviews.getInt("user_id")){
+								rv.setReviewer(us.getUsername());
+							}//if
+						}//while users
+					}catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}//trycatch
 					reviewList.add(rv);
-				}//while
+				}//while reviews
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -5,12 +5,20 @@ public class Review {
 		int score = 0;
 		int user_id=0;
 		String review="";
+		String reviewer="";
 		
 		public void setReview(String rv){
 			review = rv;
 		}
 		public String getReview(){
 			return review;
+		}
+		
+		public void setReviewer(String rv){
+			reviewer = rv;
+		}
+		public String getReviewer(){
+			return reviewer;
 		}
 		
 		public void setUser(int uid){
