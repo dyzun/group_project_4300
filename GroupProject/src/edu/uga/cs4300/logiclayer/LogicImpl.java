@@ -17,7 +17,8 @@ public class LogicImpl {
 		PersistImpl persist= null;
 		ArrayList<Game> gameList = new ArrayList<Game>();
 		ArrayList<Review> reviewList = new ArrayList<Review>();
-		
+		ArrayList<User> userList = new ArrayList<User>();
+
 		public LogicImpl(HttpServletRequest req, HttpServletResponse res){
 			request = req;
 			response= res;
@@ -117,18 +118,47 @@ public class LogicImpl {
 			return gameList;
 		}//getGamesByConsole
 		
+		public ArrayList<User> getUser(){
+			ResultSet users = persist.getUser();
+
+			try {
+				while(users.next()){
+					User us = new User();
+					us.setUsername(users.getString("username"));
+					us.setUser_id(users.getInt("user_id"));
+					userList.add(us);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return userList;
+		}//getUser
+		
 		public ArrayList<Review> getReviewsByGame(int game_id){
 			//get the result sets
 			ResultSet reviews = persist.getReviews(game_id);
-			
+			ResultSet users = persist.getUser();			
 			try {
 				while(reviews.next()){
 					Review rv = new Review();
 					rv.setScore(reviews.getInt("score"));
 					rv.setReview(reviews.getString("review"));
 					//TODO need to setUser
+					try{
+						while(users.next()){
+							User us = new User();
+							if(us.getUser_id() == reviews.getInt("user_id")){
+								rv.setReviewer(us.getUsername());
+							}//if
+						}//while users
+					}catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}//trycatch
 					reviewList.add(rv);
-				}//while
+				}//while reviews
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
