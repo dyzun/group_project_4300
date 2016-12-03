@@ -57,5 +57,12 @@ public class PersistImpl {
 		ResultSet rs = access.retrieve(con,reviews);
 		return rs;
 	}//getReviews
+	
+	public void addReview(int game_id,String review,int user_id,int score){
+		String reviews = "INSERT INTO `project_group`.`game_reviews`(`game_id`,`review`,"
+				+ "`user_id`,`score`) VALUES ("+game_id+","+review+","
+				+user_id+","+score+");";
+		int update = access.update(con,reviews);
+	}//getReviews
 		
 }
