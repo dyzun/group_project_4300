@@ -42,33 +42,6 @@ $('.tab a').on('click', function (e) {
   
 });
 
-paypal.Button.render({
-	env : 'sandbox', // Optional: specify 'sandbox' environment
-	client : {
-		sandbox : 'ARq4fCr-_83GaSDXGBueKliAEeYU-feHIyRAI-NxxzZTIK4m8WWSO6R8iBysag-KGg_p5_vjNaK-JEjU',
-		production : 'xxxxxxxxx'
-	},
-	payment : function() {
-		var env = this.props.env;
-		var client = this.props.client;
-		return paypal.rest.payment.create(env, client, {
-			transactions : [ {
-				amount : {
-					total : '1.00',
-					currency : 'USD'
-				}
-			//TODO change to game price when dynamically generated
-			} ]
-		});
-	},
-	commit : true, // Optional: show a 'Pay Now' button in the checkout flow
-	onAuthorize : function(data, actions) {
-		return actions.payment.execute().then(function() {
-			// Show a success page to the buyer
-		});
-	}
-}, '#paypal-button');
-
 /* Commit out for future use
 var paypalButton = document.getElementById('id-for-your-paypal-button');
 
