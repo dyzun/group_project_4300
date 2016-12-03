@@ -17,9 +17,9 @@ public class LogicImpl {
 	HttpServletRequest request=null;
 	HttpServletResponse response=null;
 	PersistImpl persist= null;
-	ArrayList<Game> gameList = new ArrayList<Game>();
-	ArrayList<Review> reviewList = new ArrayList<Review>();
-	ArrayList<User> userList = new ArrayList<User>();
+	ArrayList<Game> gameList = new ArrayList<>();
+	ArrayList<Review> reviewList = new ArrayList<>();
+	ArrayList<User> userList = new ArrayList<>();
 
 	public LogicImpl(HttpServletRequest req, HttpServletResponse res){
 		request = req;
@@ -185,6 +185,10 @@ public class LogicImpl {
 		}
 		return reviewList;
 	}//getReviewsByGame
+        
+        public void addReview(int user_id,int game_id,int score, String review){
+            persist.addReview(game_id, review, user_id, score);
+        }
 
 	public ArrayList<Game> getCart(int user_id){
 		//get the result sets
