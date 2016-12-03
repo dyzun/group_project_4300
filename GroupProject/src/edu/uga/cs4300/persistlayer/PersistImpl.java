@@ -5,13 +5,14 @@ import java.sql.ResultSet;
 
 
 public class PersistImpl {
-	
+	//TODO TEST FOR GIT
 	//open connection
 	DbAccessImpl access= new DbAccessImpl();
 	Connection con = access.connect();
 	
 	public ResultSet getGames(){
 		String games = "SELECT * FROM games";
+                String test ="TEST FOR GIT";
 		ResultSet rs = access.retrieve(con, games);
 		return rs;
 	}//getGames
