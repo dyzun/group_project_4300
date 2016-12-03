@@ -41,7 +41,7 @@ $('.tab a').on('click', function (e) {
   $(target).fadeIn(600);
   
 });
-
+/* Commit out for future use
 $('#purchase').click(function() {
 	// Create a Client component
 	braintree.client.create({
@@ -78,3 +78,4 @@ $('#purchase').click(function() {
 	  });
 	});//paypal button
 });
+*/
