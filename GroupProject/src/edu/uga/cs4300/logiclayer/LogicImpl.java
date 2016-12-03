@@ -42,7 +42,7 @@ public class LogicImpl {
 			e.printStackTrace();
 		}
             
-        }
+        }//checkLoginInfo
         
         
 	public ArrayList<Game> getAllGames(){
@@ -155,6 +155,11 @@ public class LogicImpl {
 
 		return userList;
 	}//getUser
+        
+        public void addUser(String username,String email,String password, String address,
+                String city, int zip_code, String state){
+            persist.addUser(username,email,password,address,city,zip_code,state);
+        }//addUser
 
 	public ArrayList<Review> getReviewsByGame(int game_id){
 		//get the result sets
@@ -188,7 +193,7 @@ public class LogicImpl {
         
         public void addReview(int game_id, String review,int user_id,int score){
             persist.addReview(game_id, review, user_id, score);
-        }
+        }//addReview
 
 	public ArrayList<Game> getCart(int user_id){
 		//get the result sets
