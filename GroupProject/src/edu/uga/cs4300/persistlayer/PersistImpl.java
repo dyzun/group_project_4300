@@ -16,11 +16,23 @@ public class PersistImpl {
 		return rs;
 	}//getGames
 	
+	public ResultSet getGamesById(int game_id){
+		String games = "SELECT * FROM games WHERE id =" + game_id;
+		ResultSet rs = access.retrieve(con, games);
+		return rs;
+	}//getGamesbyId
+	
 	public ResultSet getUser(){
 		String user = "SELECT * FROM user";
 		ResultSet rs = access.retrieve(con,user);
 		return rs;
-	}//getReviews
+	}//getUser
+	
+	public ResultSet getUserById(int user_id){
+		String user = "SELECT * FROM user WHERE id = " + user_id;
+		ResultSet rs = access.retrieve(con,user);
+		return rs;
+	}//getUser
 	
 	public ResultSet getCart(int user_id){
 		String cart = "SELECT * FROM cart WHERE user_id = " +user_id;
