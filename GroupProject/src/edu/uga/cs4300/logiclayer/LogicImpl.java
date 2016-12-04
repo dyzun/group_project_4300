@@ -37,7 +37,7 @@ public class LogicImpl {
 	} //constructor
         
     /**
-     * Takes info to get the current user, if either wrong, sql throws exception
+     * Takes info to get the current user, if either wrong, SQL throws exception
      * @param username 
      * @param password
      */
@@ -76,6 +76,7 @@ public class LogicImpl {
 				gm.setPrice(games.getInt("price"));
 				gm.setPub(games.getString("publisher"));
 				gm.setStock(games.getInt("stock"));
+                                gm.setId(games.getInt("id"));
 				gameList.add(gm);
 			}
 		} catch (SQLException e) {
@@ -106,7 +107,8 @@ public class LogicImpl {
 				gm.setPrice(games.getInt("price"));
 				gm.setPub(games.getString("publisher"));
 				gm.setStock(games.getInt("stock"));
-				ResultSet genreQ = persist.getGenre(games.getInt("id"));
+                                gm.setId(games.getInt("id"));
+				ResultSet genreQ = persist.getGenre(gm.getId());
 				try{
 					while(genreQ.next()){
 						if(genreQ.getString("genre").equals(genre)){
@@ -144,8 +146,9 @@ public class LogicImpl {
 				gm.setName(games.getString("name"));
 				gm.setPrice(games.getInt("price"));
 				gm.setPub(games.getString("publisher"));
-				gm.setStock(games.getInt("stock"));
-				ResultSet consoleQ = persist.getConsoles(games.getInt("id"));
+				gm.setStock(games.getInt("stock"));                                                
+                                gm.setId(games.getInt("id"));
+				ResultSet consoleQ = persist.getConsoles(gm.getId());
 				try{
 					while(consoleQ.next()){
 						if(consoleQ.getString("consule").equals(console)){
@@ -269,6 +272,7 @@ public class LogicImpl {
 						gm.setPrice(games.getInt("price"));
 						gm.setPub(games.getString("publisher"));
 						gm.setStock(games.getInt("stock"));
+                                                gm.setId(games.getInt("id"));
 						gameList.add(gm);
 					}//while
 				} catch (SQLException e) {
