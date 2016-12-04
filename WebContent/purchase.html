@@ -1,0 +1,98 @@
+<!DOCTYPE>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+<script src="https://js.braintreegateway.com/web/3.6.0/js/client.min.js"></script>
+<script src="https://js.braintreegateway.com/web/3.6.0/js/paypal.min.js"></script>
+</head>
+
+
+<body>
+	<div class="elements">
+
+		<header>
+
+			<img src="mainimg.png" id="main" />
+			<form method="post" action="Servlet">
+				<div id="login">
+					Username: <input type="text" name="username"> <br />
+					Password: <input type="text" name="password"><br /> <input
+						type="submit" value="Login" />
+				</div>
+			</form>
+
+		</header>
+
+		<nav>
+			<ul>
+				<li><a href="#news">PS4</a></li>
+				<li><a href="#news">XONE</a></li>
+				<li><a href="#news">Xbox 360</a></li>
+				<li><a href="#news">PC</a></li>
+				<li><a href="#news">Wii U</a>
+				<li>
+			</ul>
+		</nav>
+
+		<aside>
+			Select By Genre:
+			<ul>
+				<li><a href="#news">Action</a></li>
+				<li><a href="#news">Adventure</a></li>
+				<li><a href="#news">RPG</a></li>
+				<li><a href="#news">Shooter</a></li>
+				<li><a href="#news">Strategy</a></li>
+			</ul>
+		</aside>
+
+		<article>
+			<img src="LIS.jpg" alt="LIS" height="400" width="300" />
+			<div id="gameInfo">
+				Life is Strange <br /> Publisher: Square Enix <br /> Developer:
+				DONTNOD Entertainment <br /> Release Date: 2015 <br /> Price:
+				$29.99 <br /> Select console:<select>
+					<option value="PS4">PS4</option>
+					<option value="PS3">PS3</option>
+					<option value="XBOXONE">XBOXONE</option>
+					<option value="Xbox 360">Xbox 360</option>
+					<option value="PC">PC</option>
+				</select> <br />
+				<button type="button" id="purchase">Add to Cart!</button>
+				<script src="https://www.paypalobjects.com/api/button.js?"
+					data-merchant="braintree" data-id="paypal-button"
+					data-button="checkout" data-color="gold" data-size="medium"
+					data-shape="pill" data-button_type="submit"
+					data-button_disabled="false"></script>
+				<!-- Configuration options:
+  					data-color: "blue", "gold", "silver"
+  					data-size: "tiny", "small", "medium"
+  					data-shape: "pill", "rect"
+  					data-button_disabled: "false", "true"
+  					data-button_type: "submit", "button"
+				--->
+			</div>
+			<br />
+			<div>
+				List of Reviews:
+				<p>
+					Unrivaled storytelling, one of the best gaming experiences of the
+					past 20 years.<br /> By: LISFANBOY!!!
+				</p>
+				<p>
+					Cheesy Adolescent movie. I cringed every time they said "hella".
+					Wouldn't buy<br /> By: Some_Hater
+				</p>
+				<p>
+					Like Until Dawn, but better! Seriously this game puts companies
+					like Quantic Dream to shame.<br /> By: Maxine Caulfield
+				</p>
+				<textarea rows="4" cols="50">
+                </textarea>
+				<br />
+				<button type="button" id="add_review">Write Your Own Review</button>
+			</div>
+		</article>
+		<footer> </footer>
+	</div>
+</body>
+</html>
