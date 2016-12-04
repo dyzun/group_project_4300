@@ -41,3 +41,42 @@ $('.tab a').on('click', function (e) {
   $(target).fadeIn(600);
   
 });
+
+/* Commit out for future use
+var paypalButton = document.getElementById('id-for-your-paypal-button');
+
+// Create a Client component
+braintree.client.create({
+  authorization: 'TOKEN'
+}, function (clientErr, clientInstance) {
+  // Create PayPal component
+  braintree.paypal.create({
+    client: clientInstance
+  }, function (err, paypalInstance) {
+    $('#purchase').addEventListener('click', function () {
+      // Tokenize here!
+      paypalInstance.tokenize({
+        flow: 'checkout', // Required
+        amount: 10.00, // Required
+        currency: 'USD', // Required
+        locale: 'en_US',
+        enableShippingAddress: true,
+        shippingAddressEditable: false,
+        shippingAddressOverride: {
+          recipientName: 'Scruff McGruff',
+          line1: '1234 Main St.',
+          line2: 'Unit 1',
+          city: 'Chicago',
+          countryCode: 'US',
+          postalCode: '60652',
+          state: 'IL',
+          phone: '123.456.7890'
+        }
+      }, function (err, tokenizationPayload) {
+        // Tokenization complete
+        // Send tokenizationPayload.nonce to server
+      });
+    });
+  });
+});
+*/

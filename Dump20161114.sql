@@ -160,6 +160,10 @@ CREATE TABLE `user` (
   `username` varchar(16) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(32) NOT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `city` varchar(45) DEFAULT NULL,
+  `zip_code` int(11) DEFAULT NULL,
+  `state` varchar(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -182,4 +186,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-01 17:17:07
+-- Dump completed on 2016-11-14 17:10:00
