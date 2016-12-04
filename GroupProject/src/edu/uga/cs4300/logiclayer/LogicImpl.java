@@ -12,6 +12,10 @@ import edu.uga.cs4300.objectlayer.Review;
 import edu.uga.cs4300.objectlayer.User;
 import edu.uga.cs4300.persistlayer.PersistImpl;
 
+/**
+ *
+ * @author Owner
+ */
 public class LogicImpl {
 
 	HttpServletRequest request=null;
@@ -21,14 +25,23 @@ public class LogicImpl {
 	ArrayList<Review> reviewList = new ArrayList<>();
 	ArrayList<User> userList = new ArrayList<>();
 
-	public LogicImpl(HttpServletRequest req, HttpServletResponse res){
+    /**
+     *
+     * @param req
+     * @param res
+     */
+    public LogicImpl(HttpServletRequest req, HttpServletResponse res){
 		request = req;
 		response= res;
 		persist = new PersistImpl();
 	} //constructor
         
-        
-        public void checkLoginInfo(String username, String password){
+    /**
+     * Takes info to get the current user, if either wrong, sql throws exception
+     * @param username 
+     * @param password
+     */
+    public void checkLoginInfo(String username, String password){
             ResultSet info = persist.getUserForSignIn(username, password);
             
             try{
@@ -38,14 +51,17 @@ public class LogicImpl {
                     }
             }
              catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// TODO REPLACE WITH ERROR MESSAGE/VARIBLE
 			e.printStackTrace();
 		}
             
         }//checkLoginInfo
         
-        
-	public ArrayList<Game> getAllGames(){
+    /**
+     * used to generate list of all games
+     * @return full list of all games
+     */
+    public ArrayList<Game> getAllGames(){
 		//get the result sets
 		ResultSet games = persist.getGames();
 
@@ -70,7 +86,12 @@ public class LogicImpl {
 		return gameList;
 	}//getAllGames
 
-	public ArrayList<Game> getGamesByGenre(String genre){
+    /**
+     * used to generate list of all games of a given genre
+     * @param genre
+     * @return list of games in genre
+     */
+    public ArrayList<Game> getGamesByGenre(String genre){
 		//get the result sets
 		ResultSet games = persist.getGames();
 
@@ -104,7 +125,12 @@ public class LogicImpl {
 		return gameList;
 	}//getGamesByGenre
 
-	public ArrayList<Game> getGamesByConsole(String console){
+    /**
+     * used to generate list of all games of a given console
+     * @param console
+     * @return list of all games on said console
+     */
+    public ArrayList<Game> getGamesByConsole(String console){
 		//get the result sets
 		ResultSet games = persist.getGames();
 
@@ -138,7 +164,11 @@ public class LogicImpl {
 		return gameList;
 	}//getGamesByConsole
 
-	public ArrayList<User> getUser(){
+    /**
+     *
+     * @return username and id
+     */
+    public ArrayList<User> getUser(){
 		ResultSet users = persist.getUser();
 
 		try {
@@ -156,12 +186,27 @@ public class LogicImpl {
 		return userList;
 	}//getUser
         
-        public void addUser(String username,String email,String password, String address,
+    /**
+     * used to import user into table
+     * @param username
+     * @param email
+     * @param password
+     * @param address
+     * @param city
+     * @param zip_code
+     * @param state
+     */
+    public void addUser(String username,String email,String password, String address,
                 String city, int zip_code, String state){
             persist.addUser(username,email,password,address,city,zip_code,state);
         }//addUser
 
-	public ArrayList<Review> getReviewsByGame(int game_id){
+    /**
+     * used to general list of all reviews for a game
+     * @param game_id
+     * @return list of reviews per game with @param
+     */
+    public ArrayList<Review> getReviewsByGame(int game_id){
 		//get the result sets
 		ResultSet reviews = persist.getReviews(game_id);
 		ResultSet users = persist.getUser();			
@@ -191,11 +236,23 @@ public class LogicImpl {
 		return reviewList;
 	}//getReviewsByGame
         
-        public void addReview(int game_id, String review,int user_id,int score){
+    /**
+     * Used to add review to table
+     * @param game_id
+     * @param review
+     * @param user_id
+     * @param score
+     */
+    public void addReview(int game_id, String review,int user_id,int score){
             persist.addReview(game_id, review, user_id, score);
         }//addReview
 
-	public ArrayList<Game> getCart(int user_id){
+    /**
+     * used to return cart based on user
+     * @param user_id
+     * @return a list of all games in a users cart
+     */
+    public ArrayList<Game> getCart(int user_id){
 		//get the result sets
 		ResultSet cart = persist.getCart(user_id);			
 		try{
@@ -225,5 +282,14 @@ public class LogicImpl {
 		}//trycatch
 		return gameList;
 	}//getCart
+        
+    /**
+     * used to add game per cart
+     * @param user_id
+     * @param game_id
+     */
+    public void addToCart(int user_id, int game_id){
+            persist.addToCart(user_id, game_id);
+        }
 
 }
