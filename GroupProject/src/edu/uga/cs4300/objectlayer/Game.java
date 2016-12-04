@@ -41,5 +41,28 @@ public class Game {
 		public void setStock(int sc){
 			stock = sc;
 		}
-		
+		public String getName(){
+			return name;
+		}
+		public int getDate(){
+			return date;
+		}
+		public String getImage(){
+			return image;
+		}
+		public String getDescription(){
+			return description;
+		}
+		public String getPub(){
+			return publisher;
+		}
+		public String getDev(){
+			return developer;
+		}
+		public int getPrice(){
+			return price;
+		}
+		public int getStock(){
+			return stock;
+		}
 }//game
