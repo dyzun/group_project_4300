@@ -20,7 +20,7 @@
 			<form method="post" action="Servlet">
 				<div id="login">
 					Username: <input type="text" name="username"> <br />
-					Password: <input type="text" name="password"><br /> 
+					Password: <input type="password" name="password"><br /> 
 					<input type="submit" value="Login" />
 				</div>
 			</form>
@@ -104,7 +104,7 @@
 
 		<article>
 		
-		<h1> ${game}</h1>
+		<h1> ${game.getName()}</h1>
 					<img src=${game.getImage()} alt=${game.getName()} height="400" width="300" /><br />
 					${game.getName()} <br /> 
 					Publisher: ${game.getPub()} <br /> 
@@ -125,7 +125,47 @@
 					<#else>
   						<button type="button" id="purchase">Add to Cart</button>
 					</#if>
-				
+				<div id="paypal-button"></div>
+  
+				<script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
+ 
+ 				<script>
+ 					paypal.Button.render({
+ 
+ 						env : 'sandbox', // Optional: specify 'sandbox' environment
+ 
+ 						client : {
+ 							sandbox : 'ARq4fCr-_83GaSDXGBueKliAEeYU-feHIyRAI-NxxzZTIK4m8WWSO6R8iBysag-KGg_p5_vjNaK-JEjU',
+ 							production : 'xxxxxxxxx'
+ 						},
+ 
+ 						payment : function() {
+ 
+ 							var env = this.props.env;
+ 							var client = this.props.client;
+ 
+ 							return paypal.rest.payment.create(env, client, {
+ 								transactions : [ {
+ 									amount : {
+ 										total : '$${game.getPrice()}',
+ 										currency : 'USD'
+ 									}
+ 								//TODO change to game price when dynamically generated
+ 								} ]
+ 							});
+ 						},
+ 
+ 						commit : true, // Optional: show a 'Pay Now' button in the checkout flow
+ 
+ 						onAuthorize : function(data, actions) {
+ 							return actions.payment.execute().then(function() {
+ 								// Show a success page to the buyer
+document.location.href = 'http://localhost:8080/WEB-INF/index.html';
+
+ 							});
+ 						}
+ 					}, '#paypal-button');
+ 				</script>
 					<br />
 		</article>
 		<footer> 

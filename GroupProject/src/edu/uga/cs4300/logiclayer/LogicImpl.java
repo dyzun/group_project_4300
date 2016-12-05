@@ -1,5 +1,5 @@
 package edu.uga.cs4300.logiclayer;
-
+//try this
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -85,13 +85,38 @@ public class LogicImpl {
 
 		return gameList;
 	}//getAllGames
-
-    /**
+    
+	public Game getGameById(int id){
+		Game gm = new Game();
+		//return a result set for a game
+		ResultSet game = persist.getGamesById(id);
+		try {
+			if(game.next()){
+				gm.setDate(game.getInt("release_date"));
+				gm.setDescript(game.getString("description"));
+				gm.setDev(game.getString("developer"));
+				gm.setImage(game.getString("img"));
+				gm.setName(game.getString("name"));
+				gm.setPrice(game.getInt("price"));
+				gm.setPub(game.getString("publisher"));
+				gm.setStock(game.getInt("stock"));
+				gm.setId(game.getInt("id"));
+			} 
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return gm;
+	}//getGamesById
+	
+	/**
      * used to generate list of all games of a given genre
      * @param genre
      * @return list of games in genre
      */
-    public ArrayList<Game> getGamesByGenre(String genre){
+        public ArrayList<Game> getGamesByGenre(String genre){
+		gameList.clear();
 		//get the result sets
 		ResultSet games = persist.getGames();
 		try {
@@ -131,6 +156,7 @@ public class LogicImpl {
      * @return list of all games on said console
      */
     public ArrayList<Game> getGamesByConsole(String console){
+		gameList.clear();
 		//get the result sets
 		ResultSet games = persist.getGames();
 
@@ -253,7 +279,9 @@ public class LogicImpl {
      * @param user_id
      * @return a list of all games in a users cart
      */
-    public ArrayList<Game> getCart(int user_id){
+
+	public ArrayList<Game> getCart(int user_id){
+		gameList.clear();
 		//get the result sets
 		ResultSet cart = persist.getCart(user_id);			
 		try{
@@ -270,7 +298,7 @@ public class LogicImpl {
 						gm.setPrice(games.getInt("price"));
 						gm.setPub(games.getString("publisher"));
 						gm.setStock(games.getInt("stock"));
-                                                gm.setId(games.getInt("id"));
+						gm.setId(games.getInt("id"));
 						gameList.add(gm);
 					}//while
 				} catch (SQLException e) {

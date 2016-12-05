@@ -6,7 +6,6 @@
 		
 		<script src="https://js.braintreegateway.com/web/3.6.0/js/client.min.js"></script>
 		<script src="https://js.braintreegateway.com/web/3.6.0/js/paypal.min.js"></script>
-                <script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
 		<script src="script.js"></script>
 		<link rel="stylesheet" href="pageStyle.css">
 </head>
@@ -21,7 +20,7 @@
 			<form method="post" action="Servlet">
 				<div id="login">
 					Username: <input type="text" name="username"> <br />
-					Password: <input type="password" name="password"><br /> 
+					Password: <input type="text" name="password"><br /> 
 					<input type="submit" value="Login" />
 				</div>
 			</form>
@@ -108,13 +107,14 @@
 			<h1> Games on ${console}</h1>
 			
 		
-		
+		<form id="game" method="post" action="Servlet">
+			<input type="radio" id="button31"" name="myGame" />
+		</form>
 		<#list games as game>
 				<img src=${game.getImage()} alt=${game.getName()} height="400" width="300" /><br />
-				<form id="game" method="post" action="Servlet">
-					<a href="#" id="gameFontSize" onclick="myFunction31()"> ${game.getName()} </a> <br /> 
-					<input type="radio" id="button31" value="${game.ge}" name="myGame" />
-				</form>
+					
+					<a href="#" id="gameFontSize" onclick="myFunction31(${game.getId()})"> ${game.getName()} </a> <br /> 
+					
 					Publisher: ${game.getPub()} <br /> 
 					Developer: ${game.getDev()} <br /> 
 					Release Date: ${game.getDate()} <br /> 
@@ -126,8 +126,6 @@
 						<option value="Xbox 360">Xbox 360</option>
 						<option value="PC">PC</option>
 					</select> 
-
-
 					<br />
 					<br />
 					<br />
@@ -168,12 +166,8 @@
         document.getElementById("button28").style.display = "none";
         document.getElementById("button29").style.display = "none";
         document.getElementById("button30").style.display = "none";
-<<<<<<< HEAD
-        
-=======
         document.getElementById("button31").style.display = "none";
 		
->>>>>>> 270e7c4475047861df91e0f8d654a20ca8e13413
 		function myFunction() {
             document.getElementById("button").checked=true;
             document.getElementById("console").submit();
@@ -294,13 +288,12 @@
             document.getElementById("button30").checked=true;
             document.getElementById("genre").submit();
 		}
-<<<<<<< HEAD
-=======
-		function myFunction31() {
-            document.getElementById("button31").checked=true;
+		function myFunction31(id) {
+            var button = document.getElementById("button31");
+			button.checked=true;
+			button.value = id;
             document.getElementById("game").submit();
 		}
->>>>>>> 270e7c4475047861df91e0f8d654a20ca8e13413
 		var elements = document.getElementsByClassName("block");
 		for(var i=0; i < elements.length; i++){
 			elements[i].disabled=true;
