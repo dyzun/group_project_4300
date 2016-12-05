@@ -75,6 +75,10 @@ aside {
     line-height: 130%;
 }
 
+#gameFontSize {
+	font-size: 20px;
+}
+
 aside ul{
     list-style-type: none;
 }

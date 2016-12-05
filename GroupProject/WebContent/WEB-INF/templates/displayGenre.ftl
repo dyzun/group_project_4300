@@ -22,9 +22,16 @@
 					Username: <input type="text" name="username"> <br />
 					Password: <input type="text" name="password"><br /> 
 					<input type="submit" value="Login" />
+					
 				</div>
 			</form>
-
+			<br />
+			<form id="cart" method="post" action="Servlet">
+                    <a href="#" id="imgCart">
+                    	<img  src="cart.png" height="100px" width="100px">
+                    	<input type="radio" id="button32" value="goToCart" name="myCart" />
+                    </a>
+              </form>
 		</header>
 
 		<nav>
@@ -105,10 +112,13 @@
 		<article>
 			<h1> All ${genre} games</h1>
 	
-		
+		<form id="game" method="post" action="Servlet">
+			<input type="radio" id="button31"" name="myGame" />
+		</form>
 		<#list games as game>
 				<img src=${game.getImage()} alt=${game.getName()} height="400" width="300" /><br />
-					${game.getName()} <br /> 
+					<a href="#" id="gameFontSize" onclick="myFunction31(${game.getId()})"> ${game.getName()} </a> 
+					<br /> 
 					Publisher: ${game.getPub()} <br /> 
 					Developer: ${game.getDev()} <br /> 
 					Release Date: ${game.getDate()} <br /> 
@@ -159,6 +169,7 @@
         document.getElementById("button28").style.display = "none";
         document.getElementById("button29").style.display = "none";
         document.getElementById("button30").style.display = "none";
+        document.getElementById("button31").style.display = "none";
         
 		function myFunction() {
             document.getElementById("button").checked=true;
@@ -280,10 +291,22 @@
             document.getElementById("button30").checked=true;
             document.getElementById("genre").submit();
 		}
+		function myFunction31(id) {
+            var button = document.getElementById("button31");
+			button.checked=true;
+			button.value = id;
+            document.getElementById("game").submit();
+		}
 		var elements = document.getElementsByClassName("block");
 		for(var i=0; i < elements.length; i++){
 			elements[i].disabled=true;
 		}
+		var cart = document.getElementById("button32");
+    	cart.style.display = "none";
+    	document.getElementById("imgCart").onclick = function(){
+    		cart.checked=true;
+    		document.getElementById("cart").submit();
+    	}
 	</script>
 </body>
 </html>

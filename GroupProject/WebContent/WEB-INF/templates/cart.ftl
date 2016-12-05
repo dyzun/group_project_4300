@@ -22,9 +22,17 @@
 					Username: <input type="text" name="username"> <br />
 					Password: <input type="text" name="password"><br /> 
 					<input type="submit" value="Login" />
+					
+                    
 				</div>
 			</form>
-
+			<br />
+			<form id="cart" method="post" action="Servlet">
+                    <a href="#" id="imgCart">
+                    	<img  src="cart.png" height="100px" width="100px">
+                    	<input type="radio" id="button32" value="goToCart" name="myCart" />
+                    </a>
+             </form>
 		</header>
 
 		<nav>
@@ -103,9 +111,8 @@
 		</aside>
 
 		<article>
-			<h1> All ${genre} games</h1>
+			<h1> Game in the Cart</h1>
 	
-		
 		<#list games as game>
 				<img src=${game.getImage()} alt=${game.getName()} height="400" width="300" /><br />
 					${game.getName()} <br /> 
@@ -113,32 +120,13 @@
 					Developer: ${game.getDev()} <br /> 
 					Release Date: ${game.getDate()} <br /> 
 					Price: $${game.getPrice()} <br /> 
-					Select console:<select>
-						<option value="PS4">PS4</option>
-						<option value="PS3">PS3</option>
-						<option value="XBOXONE">XBOXONE</option>
-						<option value="Xbox 360">Xbox 360</option>
-						<option value="PC">PC</option>
-					</select> <br />
-					
-					<#if game.getStock() < 6>
-						<button type="button" class ="block">Out of Stock</button>
-					<#else>
-  						<button type="button" id="purchase">Add to Cart</button>
-					</#if>
-					
+					<form method="post" action="Servlet">
+						<button type="submit" value="${game.getId()}" name="gameToRemove">Remove</button>
+					</form>
 					<br />
-					<br />
-					<!-- Configuration options:
-						data-color: "blue", "gold", "silver"
-						data-size: "tiny", "small", "medium"
-						data-shape: "pill", "rect"
-						data-button_disabled: "false", "true"
-						data-button_type: "submit", "button"
-					--->
-					<br />
-				
 		</#list>
+		Total: $${totalPrice} <br />
+		Checkout: 
 		</article>
 		<footer> 
 		</footer>
@@ -299,6 +287,12 @@
 		for(var i=0; i < elements.length; i++){
 			elements[i].disabled=true;
 		}
+		var cart = document.getElementById("button32");
+    	cart.style.display = "none";
+    	document.getElementById("imgCart").onclick = function(){
+    		cart.checked=true;
+    		document.getElementById("cart").submit();
+    	}
 	</script>
 </body>
 </html>

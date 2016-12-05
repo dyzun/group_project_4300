@@ -220,7 +220,7 @@ public class LogicImpl {
 		return reviewList;
 	}//getReviewsByGame
         
-        public void addReview(int game_id, String review,int user_id,int score){
+    public void addReview(int game_id, String review,int user_id,int score){
             persist.addReview(game_id, review, user_id, score);
         }//addReview
 
