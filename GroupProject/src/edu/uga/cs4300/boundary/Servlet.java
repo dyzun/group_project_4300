@@ -38,11 +38,17 @@ public class Servlet extends HttpServlet {
 	Configuration cfg = null;
     Map<String, Object> root = new HashMap<String, Object>();
     ArrayList<Game> gameList = new ArrayList<Game>();
+    ArrayList<Game> gamesForPurchase = new ArrayList<Game>();
     private String templateDir = "/WEB-INF/templates";
     String console="";
     String genre="";
     String gameId="";
+    String gameToRemove="";
+    String myCart="";
+    int totalPrice = 0;
     boolean login=false;
+    String gameToCart="";
+    
     
     
     /**
@@ -100,7 +106,11 @@ public class Servlet extends HttpServlet {
 			console = request.getParameter("myConsole");
 			genre = request.getParameter("myGenre");
 			gameId = request.getParameter("myGame");
+			gameToCart = request.getParameter("gameToCart");
+			gameToRemove = request.getParameter("gameToRemove");
+			myCart = request.getParameter("myCart");
 			gameList.clear();
+			
 			if(console != null){
 				gameList.addAll(logic.getGamesByConsole(console));
 				root.put("games", gameList);
@@ -119,12 +129,32 @@ public class Servlet extends HttpServlet {
 				root.put("game", gm);
 				runTemplate(request, response, "gamePage.ftl");
 			}
+                        else if(gameToCart != null){
+				int id = Integer.parseInt(gameToCart);
+				System.out.println(gameToCart);
+				gameToCart = null;
+				System.out.println(gameToCart);
+				Game gm = logic.getGameById(id);
+				gamesForPurchase.add(gm);
+				totalPrice += gm.getPrice();
+				System.out.println("I ran");
+				root.put("totalPrice", totalPrice);
+				root.put("games", gamesForPurchase);
+				runTemplate(request, response, "cart.ftl");
+			}
+			else if(myCart != null){
+				root.put("totalPrice", totalPrice);
+				root.put("games", gamesForPurchase);
+				runTemplate(request, response, "cart.ftl");
+			}
+			
 			String username ="";
 			username= request.getParameter("user");
 			String password ="";
 			password = request.getParameter("passw");
-			System.out.println("Username: "+ username + " Password: "+ password);
-			logic.checkLoginInfo(username, password);			
+			logic.checkLoginInfo(username, password);	
+			gameToCart = null;
+
 	} // doGet
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

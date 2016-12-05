@@ -355,9 +355,16 @@ document.location.href = 'http://localhost:8080/WEB-INF/index.html';
 					Username: <input type="text" name="username"> <br />
 					Password: <input type="text" name="password"><br /> 
 					<input type="submit" value="Login" />
+					
 				</div>
 			</form>
-
+			<br />
+			<form id="cart" method="post" action="Servlet">
+                    <a href="#" id="imgCart">
+                    	<img  src="cart.png" height="100px" width="100px">
+                    	<input type="radio" id="button32" value="goToCart" name="myCart" />
+                    </a>
+             </form>
 		</header>
 
 		<nav>
@@ -456,9 +463,11 @@ document.location.href = 'http://localhost:8080/WEB-INF/index.html';
 					<#if game.getStock() < 1>
 						<button type="button" class ="block">Out of Stock</button>
 					<#else>
-  						<button type="button" id="purchase">Add to Cart</button>
+						<form id="addToCart" method="post" action="Servlet">
+  							<button id="purchase" value = "${game.getId()}" name="gameToCart">Add to Cart</button>
+  						</form>
 					</#if>
-				
+					
 					<br />
 		</article>
 		<footer> 
@@ -620,6 +629,15 @@ document.location.href = 'http://localhost:8080/WEB-INF/index.html';
 		for(var i=0; i < elements.length; i++){
 			elements[i].disabled=true;
 		}
+		var cart = document.getElementById("button32");
+    	cart.style.display = "none";
+    	document.getElementById("imgCart").onclick = function(){
+    		cart.checked=true;
+    		document.getElementById("cart").submit();
+    	}
+    	document.getElementById("purchase").onclick = function(){
+    		document.getElementById("addToCart").submit();
+    	}
 	</script>
 </body>
 >>>>>>> b8e27e443412fb058b0688b5d93c1702a2e2e78e

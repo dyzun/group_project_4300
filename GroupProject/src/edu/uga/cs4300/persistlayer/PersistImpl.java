@@ -116,7 +116,7 @@ public class PersistImpl {
 		String cart = "DELETE FROM `project_group`.`cart` WHERE user_id = '"+user_id+"'"
                         + " AND game_id = '"+3+"'";
 		int update = access.delete(con,cart);
-	}//getCart
+	}//removeFromCart
 	
     /**
      * used to get genre of a selected game
