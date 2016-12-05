@@ -24,6 +24,7 @@ public class LogicImpl {
 	ArrayList<Game> gameList = new ArrayList<>();
 	ArrayList<Review> reviewList = new ArrayList<>();
 	ArrayList<User> userList = new ArrayList<>();
+        ArrayList<String> consoleList = new ArrayList<>();
 
     /**
      *
@@ -85,7 +86,7 @@ public class LogicImpl {
 
 		return gameList;
 	}//getAllGames
-    
+
 	public Game getGameById(int id){
 		Game gm = new Game();
 		//return a result set for a game
@@ -190,6 +191,22 @@ public class LogicImpl {
 		}
 		return gameList;
 	}//getGamesByConsole
+    
+    public ArrayList<String> getConsolesByGame(int game_id){
+        consoleList.clear();
+        ResultSet consoles = persist.getConsoles(game_id);
+        try{
+            while(consoles.next()){
+                String con ="";
+                con = consoles.getString("consule");
+                consoleList.add(con);
+            }
+        } catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        return consoleList;
+    }
 
     /**
      *

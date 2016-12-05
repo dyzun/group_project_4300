@@ -125,7 +125,6 @@ public class Servlet extends HttpServlet {
 			password = request.getParameter("passw");
 			System.out.println("Username: "+ username + " Password: "+ password);
 			logic.checkLoginInfo(username, password);			
-
 	} // doGet
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
