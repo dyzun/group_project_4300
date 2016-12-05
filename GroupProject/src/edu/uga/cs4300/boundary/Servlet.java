@@ -110,20 +110,13 @@ public class Servlet extends HttpServlet {
 				root.put("genre", genre);
 				runTemplate(request, response,"displayGenre.ftl");
 			}
-<<<<<<< HEAD
-=======
-			
->>>>>>> 270e7c4475047861df91e0f8d654a20ca8e13413
+
 			String username ="";
 			username= request.getParameter("user");
 			String password ="";
 			password = request.getParameter("passw");
-<<<<<<< HEAD
 			System.out.println("Username: "+ username + " Password: "+ password);
-=======
-			logic.checkLoginInfo(username, password);
->>>>>>> 270e7c4475047861df91e0f8d654a20ca8e13413
-			
+			logic.checkLoginInfo(username, password);			
 	} // doGet
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
