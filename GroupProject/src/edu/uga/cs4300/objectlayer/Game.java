@@ -9,6 +9,7 @@ public class Game {
 		String developer="";
 		int price=0;
 		int stock=0;
+                int game_id=0;
 		
 		public void setName(String nm){
 			name = nm;
@@ -37,6 +38,9 @@ public class Game {
 		public void setPrice(int pc){
 			price = pc;
 		}
+                public void setId(int id){
+                    game_id =id;
+                }
 		
 		public void setStock(int sc){
 			stock = sc;
@@ -65,4 +69,7 @@ public class Game {
 		public int getStock(){
 			return stock;
 		}
+                public int getId(){
+                    return game_id;
+                }
 }//game
