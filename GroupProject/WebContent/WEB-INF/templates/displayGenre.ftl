@@ -20,7 +20,7 @@
 			<form method="post" action="Servlet">
 				<div id="login">
 					Username: <input type="text" name="username"> <br />
-					Password: <input type="text" name="password"><br /> 
+					Password: <input type="password" name="password"><br /> 
 					<input type="submit" value="Login" />
 				</div>
 			</form>
@@ -119,7 +119,6 @@
 						<option value="XBOXONE">XBOXONE</option>
 						<option value="Xbox 360">Xbox 360</option>
 						<option value="PC">PC</option>
-<<<<<<< HEAD
 					</select> <br />
 					
 					<#if game.getStock() < 6>
@@ -128,21 +127,51 @@
   						<button type="button" id="purchase">Add to Cart</button>
 					</#if>
 					
+<div id="paypal-button"></div>
+  
+				<script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
+ 
+ 				<script>
+ 					paypal.Button.render({
+ 
+ 						env : 'sandbox', // Optional: specify 'sandbox' environment
+ 
+ 						client : {
+ 							sandbox : 'ARq4fCr-_83GaSDXGBueKliAEeYU-feHIyRAI-NxxzZTIK4m8WWSO6R8iBysag-KGg_p5_vjNaK-JEjU',
+ 							production : 'xxxxxxxxx'
+ 						},
+ 
+ 						payment : function() {
+ 
+ 							var env = this.props.env;
+ 							var client = this.props.client;
+ 
+ 							return paypal.rest.payment.create(env, client, {
+ 								transactions : [ {
+ 									amount : {
+ 										total : '$${game.getPrice()}',
+ 										currency : 'USD'
+ 									}
+ 								//TODO change to game price when dynamically generated
+ 								} ]
+ 							});
+ 						},
+ 
+ 						commit : true, // Optional: show a 'Pay Now' button in the checkout flow
+ 
+ 						onAuthorize : function(data, actions) {
+ 							return actions.payment.execute().then(function() {
+ 								// Show a success page to the buyer
+document.location.href = 'http://localhost:8080/WEB-INF/purchase.html';
+
+ 							});
+ 						}
+ 					}, '#paypal-button');
+ 				</script>
+
 					<br />
 					<br />
-					<!-- Configuration options:
-						data-color: "blue", "gold", "silver"
-						data-size: "tiny", "small", "medium"
-						data-shape: "pill", "rect"
-						data-button_disabled: "false", "true"
-						data-button_type: "submit", "button"
-					--->
-=======
-					</select><br />
-					
->>>>>>> 270e7c4475047861df91e0f8d654a20ca8e13413
-					<br />
-				
+									
 		</#list>
 		</article>
 		<footer> 
