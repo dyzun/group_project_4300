@@ -9,7 +9,11 @@ public class Game {
 		String developer="";
 		int price=0;
 		int stock=0;
+<<<<<<< HEAD
                 int game_id=0;
+=======
+        int game_id=0;
+>>>>>>> 270e7c4475047861df91e0f8d654a20ca8e13413
 		
 		public void setName(String nm){
 			name = nm;
@@ -38,9 +42,15 @@ public class Game {
 		public void setPrice(int pc){
 			price = pc;
 		}
+<<<<<<< HEAD
                 public void setId(int id){
                     game_id =id;
                 }
+=======
+        public void setId(int id){
+            game_id =id;
+        }
+>>>>>>> 270e7c4475047861df91e0f8d654a20ca8e13413
 		
 		public void setStock(int sc){
 			stock = sc;
@@ -69,7 +79,14 @@ public class Game {
 		public int getStock(){
 			return stock;
 		}
+<<<<<<< HEAD
                 public int getId(){
                     return game_id;
                 }
 }//game
+=======
+        public int getId(){
+           return game_id;
+        }
+}//game
+>>>>>>> 270e7c4475047861df91e0f8d654a20ca8e13413

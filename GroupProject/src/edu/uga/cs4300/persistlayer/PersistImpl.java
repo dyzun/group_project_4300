@@ -73,6 +73,7 @@ public class PersistImpl {
 		return rs;
 	}//getUser
         
+<<<<<<< HEAD
     /**
      * used to check login info
      * @param user
@@ -80,6 +81,9 @@ public class PersistImpl {
      * @return single row of user with password, meant to fail if either wrong
      */
     public ResultSet getUserForSignIn(String user, String pass){
+=======
+        public ResultSet getUserForSignIn(String user, String pass){
+>>>>>>> 270e7c4475047861df91e0f8d654a20ca8e13413
                 String query = "SELECT * FROM user WHERE username = '"+user+"' AND password = '"+pass+"'";
                 ResultSet rs = access.retrieve(con, query);
                 return rs;

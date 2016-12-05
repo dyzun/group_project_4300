@@ -119,7 +119,6 @@
 						<option value="XBOXONE">XBOXONE</option>
 						<option value="Xbox 360">Xbox 360</option>
 						<option value="PC">PC</option>
-<<<<<<< HEAD
 					</select> <br />
 					
 					<#if game.getStock() < 6>
@@ -137,10 +136,6 @@
 						data-button_disabled: "false", "true"
 						data-button_type: "submit", "button"
 					--->
-=======
-					</select><br />
-					
->>>>>>> 270e7c4475047861df91e0f8d654a20ca8e13413
 					<br />
 				
 		</#list>

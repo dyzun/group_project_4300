@@ -43,6 +43,7 @@ public class LogicImpl {
      */
     public void checkLoginInfo(String username, String password){
             ResultSet info = persist.getUserForSignIn(username, password);
+<<<<<<< HEAD
             
             try{
                     while(info.next()){
@@ -55,6 +56,20 @@ public class LogicImpl {
 			e.printStackTrace();
 		}
             
+=======
+                    try {
+                    	if(info.next()){
+                    		User us = new User();
+                    		us.setUsername(info.getString("username"));
+                    		System.out.println(info.getString("username"));
+                    		System.out.println("Created user successfully");
+                    	}
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} 
+                   
+>>>>>>> 270e7c4475047861df91e0f8d654a20ca8e13413
         }//checkLoginInfo
         
     /**
@@ -95,10 +110,13 @@ public class LogicImpl {
     public ArrayList<Game> getGamesByGenre(String genre){
 		//get the result sets
 		ResultSet games = persist.getGames();
-
 		try {
 			while(games.next()){
+<<<<<<< HEAD
 		
+=======
+				
+>>>>>>> 270e7c4475047861df91e0f8d654a20ca8e13413
 				ResultSet genreQ = persist.getGenre(games.getInt("id"));
 				try{
 					while(genreQ.next()){
@@ -112,6 +130,10 @@ public class LogicImpl {
 							gm.setPrice(games.getInt("price"));
 							gm.setPub(games.getString("publisher"));
 							gm.setStock(games.getInt("stock"));
+<<<<<<< HEAD
+=======
+							gm.setId(games.getInt("id"));
+>>>>>>> 270e7c4475047861df91e0f8d654a20ca8e13413
 							gameList.add(gm);
 						}//if
 					}//while
@@ -138,7 +160,11 @@ public class LogicImpl {
 
 		try {
 			while(games.next()){
+<<<<<<< HEAD
 
+=======
+				
+>>>>>>> 270e7c4475047861df91e0f8d654a20ca8e13413
 				ResultSet consoleQ = persist.getConsoles(games.getInt("id"));
 				try{
 					while(consoleQ.next()){
@@ -152,6 +178,10 @@ public class LogicImpl {
 							gm.setPrice(games.getInt("price"));
 							gm.setPub(games.getString("publisher"));
 							gm.setStock(games.getInt("stock"));
+<<<<<<< HEAD
+=======
+							gm.setId(games.getInt("id"));
+>>>>>>> 270e7c4475047861df91e0f8d654a20ca8e13413
 							gameList.add(gm);
 						}//if
 					}//while
@@ -188,6 +218,7 @@ public class LogicImpl {
 
 		return userList;
 	}//getUser
+<<<<<<< HEAD
         
     /**
      * used to import user into table
@@ -200,6 +231,10 @@ public class LogicImpl {
      * @param state
      */
     public void addUser(String username,String email,String password, String address,
+=======
+        //test for git
+        public void addUser(String username,String email,String password, String address,
+>>>>>>> 270e7c4475047861df91e0f8d654a20ca8e13413
                 String city, int zip_code, String state){
             persist.addUser(username,email,password,address,city,zip_code,state);
         }//addUser

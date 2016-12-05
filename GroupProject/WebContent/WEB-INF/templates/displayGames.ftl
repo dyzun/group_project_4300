@@ -111,7 +111,10 @@
 		
 		<#list games as game>
 				<img src=${game.getImage()} alt=${game.getName()} height="400" width="300" /><br />
-					${game.getName()} <br /> 
+				<form id="game" method="post" action="Servlet">
+					<a href="#" id="gameFontSize" onclick="myFunction31()"> ${game.getName()} </a> <br /> 
+					<input type="radio" id="button31" value="${game.ge}" name="myGame" />
+				</form>
 					Publisher: ${game.getPub()} <br /> 
 					Developer: ${game.getDev()} <br /> 
 					Release Date: ${game.getDate()} <br /> 
@@ -122,23 +125,9 @@
 						<option value="XBOXONE">XBOXONE</option>
 						<option value="Xbox 360">Xbox 360</option>
 						<option value="PC">PC</option>
-					</select> <br />
-					
-					<#if game.getStock() < 6>
-						<button type="button" class ="block">Out of Stock</button>
-					<#else>
-  						<button type="button" id="purchase">Add to Cart</button>
-					</#if>
-					
+					</select> 
 					<br />
 					<br />
-					<!-- Configuration options:
-						data-color: "blue", "gold", "silver"
-						data-size: "tiny", "small", "medium"
-						data-shape: "pill", "rect"
-						data-button_disabled: "false", "true"
-						data-button_type: "submit", "button"
-					--->
 					<br />
 				
 		</#list>
@@ -177,7 +166,12 @@
         document.getElementById("button28").style.display = "none";
         document.getElementById("button29").style.display = "none";
         document.getElementById("button30").style.display = "none";
+<<<<<<< HEAD
         
+=======
+        document.getElementById("button31").style.display = "none";
+		
+>>>>>>> 270e7c4475047861df91e0f8d654a20ca8e13413
 		function myFunction() {
             document.getElementById("button").checked=true;
             document.getElementById("console").submit();
@@ -298,6 +292,13 @@
             document.getElementById("button30").checked=true;
             document.getElementById("genre").submit();
 		}
+<<<<<<< HEAD
+=======
+		function myFunction31() {
+            document.getElementById("button31").checked=true;
+            document.getElementById("game").submit();
+		}
+>>>>>>> 270e7c4475047861df91e0f8d654a20ca8e13413
 		var elements = document.getElementsByClassName("block");
 		for(var i=0; i < elements.length; i++){
 			elements[i].disabled=true;

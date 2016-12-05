@@ -103,47 +103,30 @@
 		</aside>
 
 		<article>
-			<h1> All ${genre} games</h1>
-	
 		
-		<#list games as game>
-				<img src=${game.getImage()} alt=${game.getName()} height="400" width="300" /><br />
+		<h1> ${game}</h1>
+					<img src=${game.getImage()} alt=${game.getName()} height="400" width="300" /><br />
 					${game.getName()} <br /> 
 					Publisher: ${game.getPub()} <br /> 
 					Developer: ${game.getDev()} <br /> 
 					Release Date: ${game.getDate()} <br /> 
 					Price: $${game.getPrice()} <br /> 
-					Select console:<select>
+					Select console:
+					<select>
 						<option value="PS4">PS4</option>
 						<option value="PS3">PS3</option>
 						<option value="XBOXONE">XBOXONE</option>
 						<option value="Xbox 360">Xbox 360</option>
 						<option value="PC">PC</option>
-<<<<<<< HEAD
 					</select> <br />
 					
-					<#if game.getStock() < 6>
+					<#if game.getStock() < 1>
 						<button type="button" class ="block">Out of Stock</button>
 					<#else>
   						<button type="button" id="purchase">Add to Cart</button>
 					</#if>
-					
-					<br />
-					<br />
-					<!-- Configuration options:
-						data-color: "blue", "gold", "silver"
-						data-size: "tiny", "small", "medium"
-						data-shape: "pill", "rect"
-						data-button_disabled: "false", "true"
-						data-button_type: "submit", "button"
-					--->
-=======
-					</select><br />
-					
->>>>>>> 270e7c4475047861df91e0f8d654a20ca8e13413
-					<br />
 				
-		</#list>
+					<br />
 		</article>
 		<footer> 
 		</footer>
