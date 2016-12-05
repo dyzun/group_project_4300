@@ -107,6 +107,17 @@ public class PersistImpl {
 		int update = access.update(con,cart);
 	}//getCart
 	
+        /**
+     * used to remove item to cart based on user id and game id
+     * @param user_id
+     * @param game_id
+     */
+    public void removeFromCart(int user_id, int game_id){
+		String cart = "DELETE FROM `project_group`.`cart` WHERE user_id = '"+user_id+"'"
+                        + " AND game_id = '"+3+"'";
+		int update = access.delete(con,cart);
+	}//getCart
+	
     /**
      * used to get genre of a selected game
      * @param game_id

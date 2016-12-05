@@ -321,5 +321,13 @@ public class LogicImpl {
     public void addToCart(int user_id, int game_id){
             persist.addToCart(user_id, game_id);
         }
+    /**
+     * used to remove game per cart
+     * @param user_id
+     * @param game_id
+     */
+    public void removeFromCart(int user_id, int game_id){
+            persist.removeFromCart(user_id, game_id);
+        }
 
 }
