@@ -103,10 +103,8 @@
 		</aside>
 
 		<article>
-		
-			<h1> Games on ${console}</h1>
-			
-		
+			<h1> All ${genre} games</h1>
+	
 		
 		<#list games as game>
 				<img src=${game.getImage()} alt=${game.getName()} height="400" width="300" /><br />
