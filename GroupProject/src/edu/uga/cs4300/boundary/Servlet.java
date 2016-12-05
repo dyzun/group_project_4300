@@ -39,6 +39,9 @@ public class Servlet extends HttpServlet {
     Map<String, Object> root = new HashMap<String, Object>();
     ArrayList<Game> gameList = new ArrayList<Game>();
     private String templateDir = "/WEB-INF/templates";
+    String console="";
+    String genre="";
+    boolean login=false;
     
     /**
      * @see HttpServlet#HttpServlet()
@@ -92,14 +95,27 @@ public class Servlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
 			LogicImpl logic = new LogicImpl(request, response);
-			String console="";
 			console = request.getParameter("myConsole");
-			System.out.println("Console is: "+ console);
+			genre= request.getParameter("myGenre");
 			gameList.clear();
-			gameList.addAll(logic.getAllGames());
-			root.put("games", gameList);
-			root.put("console", console);
-			runTemplate(request, response,"displayGames.ftl");
+			if(console != null){
+				gameList.addAll(logic.getGamesByConsole(console));
+				root.put("games", gameList);
+				root.put("console", console);
+				runTemplate(request, response,"displayGames.ftl");
+			}
+			else if(genre != null){
+				gameList.addAll(logic.getGamesByGenre(genre));
+				root.put("games", gameList);
+				root.put("genre", genre);
+				runTemplate(request, response,"displayGenre.ftl");
+			}
+			String username ="";
+			username= request.getParameter("user");
+			String password ="";
+			password = request.getParameter("passw");
+			System.out.println("Username: "+ username + " Password: "+ password);
+			
 	} // doGet
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
