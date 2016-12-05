@@ -41,7 +41,9 @@ public class Servlet extends HttpServlet {
     private String templateDir = "/WEB-INF/templates";
     String console="";
     String genre="";
+    String gameId="";
     boolean login=false;
+    
     
     /**
      * @see HttpServlet#HttpServlet()
@@ -96,7 +98,8 @@ public class Servlet extends HttpServlet {
 			
 			LogicImpl logic = new LogicImpl(request, response);
 			console = request.getParameter("myConsole");
-			genre= request.getParameter("myGenre");
+			genre = request.getParameter("myGenre");
+			gameId = request.getParameter("myGame");
 			gameList.clear();
 			if(console != null){
 				gameList.addAll(logic.getGamesByConsole(console));
@@ -110,12 +113,20 @@ public class Servlet extends HttpServlet {
 				root.put("genre", genre);
 				runTemplate(request, response,"displayGenre.ftl");
 			}
+			else if(gameId != null){
+				int id = Integer.parseInt(gameId);
+				Game gm = logic.getGameById(id);
+				root.put("game", gm);
+				runTemplate(request, response, "gamePage.ftl");
+			}
 			
 			String username ="";
 			username= request.getParameter("user");
 			String password ="";
 			password = request.getParameter("passw");
 			logic.checkLoginInfo(username, password);
+			
+			
 			
 	} // doGet
 	/**

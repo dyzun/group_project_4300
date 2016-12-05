@@ -104,7 +104,7 @@
 
 		<article>
 		
-		<h1> ${game}</h1>
+		<h1> ${game.getName()}</h1>
 					<img src=${game.getImage()} alt=${game.getName()} height="400" width="300" /><br />
 					${game.getName()} <br /> 
 					Publisher: ${game.getPub()} <br /> 

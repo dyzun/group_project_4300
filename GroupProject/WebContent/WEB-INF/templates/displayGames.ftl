@@ -107,13 +107,14 @@
 			<h1> Games on ${console}</h1>
 			
 		
-		
+		<form id="game" method="post" action="Servlet">
+			<input type="radio" id="button31"" name="myGame" />
+		</form>
 		<#list games as game>
 				<img src=${game.getImage()} alt=${game.getName()} height="400" width="300" /><br />
-				<form id="game" method="post" action="Servlet">
-					<a href="#" id="gameFontSize" onclick="myFunction31()"> ${game.getName()} </a> <br /> 
-					<input type="radio" id="button31" value="${game.ge}" name="myGame" />
-				</form>
+					
+					<a href="#" id="gameFontSize" onclick="myFunction31(${game.getId()})"> ${game.getName()} </a> <br /> 
+					
 					Publisher: ${game.getPub()} <br /> 
 					Developer: ${game.getDev()} <br /> 
 					Release Date: ${game.getDate()} <br /> 
@@ -287,8 +288,10 @@
             document.getElementById("button30").checked=true;
             document.getElementById("genre").submit();
 		}
-		function myFunction31() {
-            document.getElementById("button31").checked=true;
+		function myFunction31(id) {
+            var button = document.getElementById("button31");
+			button.checked=true;
+			button.value = id;
             document.getElementById("game").submit();
 		}
 		var elements = document.getElementsByClassName("block");
