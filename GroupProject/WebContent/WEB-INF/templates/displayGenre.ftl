@@ -6,7 +6,6 @@
 		
 		<script src="https://js.braintreegateway.com/web/3.6.0/js/client.min.js"></script>
 		<script src="https://js.braintreegateway.com/web/3.6.0/js/paypal.min.js"></script>
-                <script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
 		<script src="script.js"></script>
 		<link rel="stylesheet" href="pageStyle.css">
 </head>
@@ -104,10 +103,8 @@
 		</aside>
 
 		<article>
-		
-			<h1> Games on ${console}</h1>
-			
-		
+			<h1> All ${genre} games</h1>
+	
 		
 		<#list games as game>
 				<img src=${game.getImage()} alt=${game.getName()} height="400" width="300" /><br />

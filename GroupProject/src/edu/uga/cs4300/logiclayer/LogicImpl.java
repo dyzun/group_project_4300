@@ -98,20 +98,20 @@ public class LogicImpl {
 
 		try {
 			while(games.next()){
-				Game gm = new Game();
-				gm.setDate(games.getInt("release_date"));
-				gm.setDescript(games.getString("description"));
-				gm.setDev(games.getString("developer"));
-				gm.setImage(games.getString("img"));
-				gm.setName(games.getString("name"));
-				gm.setPrice(games.getInt("price"));
-				gm.setPub(games.getString("publisher"));
-				gm.setStock(games.getInt("stock"));
-                                gm.setId(games.getInt("id"));
-				ResultSet genreQ = persist.getGenre(gm.getId());
+		
+				ResultSet genreQ = persist.getGenre(games.getInt("id"));
 				try{
 					while(genreQ.next()){
-						if(genreQ.getString("genre").equals(genre)){
+						if(genreQ.getString("genre").equalsIgnoreCase(genre)){
+							Game gm = new Game();
+							gm.setDate(games.getInt("release_date"));
+							gm.setDescript(games.getString("description"));
+							gm.setDev(games.getString("developer"));
+							gm.setImage(games.getString("img"));
+							gm.setName(games.getString("name"));
+							gm.setPrice(games.getInt("price"));
+							gm.setPub(games.getString("publisher"));
+							gm.setStock(games.getInt("stock"));
 							gameList.add(gm);
 						}//if
 					}//while
@@ -138,20 +138,20 @@ public class LogicImpl {
 
 		try {
 			while(games.next()){
-				Game gm = new Game();
-				gm.setDate(games.getInt("release_date"));
-				gm.setDescript(games.getString("description"));
-				gm.setDev(games.getString("developer"));
-				gm.setImage(games.getString("img"));
-				gm.setName(games.getString("name"));
-				gm.setPrice(games.getInt("price"));
-				gm.setPub(games.getString("publisher"));
-				gm.setStock(games.getInt("stock"));                                                
-                                gm.setId(games.getInt("id"));
-				ResultSet consoleQ = persist.getConsoles(gm.getId());
+
+				ResultSet consoleQ = persist.getConsoles(games.getInt("id"));
 				try{
 					while(consoleQ.next()){
-						if(consoleQ.getString("consule").equals(console)){
+						if(consoleQ.getString("consule").equalsIgnoreCase(console)){
+							Game gm = new Game();
+							gm.setDate(games.getInt("release_date"));
+							gm.setDescript(games.getString("description"));
+							gm.setDev(games.getString("developer"));
+							gm.setImage(games.getString("img"));
+							gm.setName(games.getString("name"));
+							gm.setPrice(games.getInt("price"));
+							gm.setPub(games.getString("publisher"));
+							gm.setStock(games.getInt("stock"));
 							gameList.add(gm);
 						}//if
 					}//while
