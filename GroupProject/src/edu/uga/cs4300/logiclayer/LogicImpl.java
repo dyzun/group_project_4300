@@ -158,7 +158,7 @@ public class LogicImpl {
 
 		return userList;
 	}//getUser
-        
+        //test for git
         public void addUser(String username,String email,String password, String address,
                 String city, int zip_code, String state){
             persist.addUser(username,email,password,address,city,zip_code,state);
