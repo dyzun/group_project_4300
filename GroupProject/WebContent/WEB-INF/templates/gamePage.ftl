@@ -147,7 +147,7 @@
  							return paypal.rest.payment.create(env, client, {
  								transactions : [ {
  									amount : {
- 										total : '$${game.getPrice()}',
+ 										total : '1.00',//replace with total varible
  										currency : 'USD'
  									}
  								//TODO change to game price when dynamically generated
