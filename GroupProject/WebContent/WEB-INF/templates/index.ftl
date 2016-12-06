@@ -1,46 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head>
-      <meta charset="UTF-8">
-      <title>Games</title>
-		
-		<script src="https://js.braintreegateway.com/web/3.6.0/js/client.min.js"></script>
-		<script src="https://js.braintreegateway.com/web/3.6.0/js/paypal.min.js"></script>
-		<script src="script.js"></script>
-		<link rel="stylesheet" href="pageStyle.css">
-</head>
-
-
-<body>
-	<div class="elements">
-
-		<header>
-
-			<img src="mainimg.png" id="main" />
-			<form method="post" action="Servlet">
-				<div id="login">
+    <head>
+    	<title>Main Page</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="pageStyle.css">
+       
+    </head>
+    
+    
+    <body>
+    <div class="elements">
+        
+        <header>
+        
+        <img src="mainimg.png" id="main" />
+        
+            
+                <div id="login">
+                    <form method="post" action="Servlet">
                     Username: <input type="text" name="user" /> <br />
-                      Password: <input type="password" name="passw" /> <br /> <br />
-                      <button type="submit" value="logIn" name="logIn">Login</button>
-                     <button type="submit" value="logOut" name="logOut">Logout</button><br><br>
-                     <a href="Registration.html">Register</a>
-                      </form>
-                     <br>
-                     ${input! "User: Guest"}
-                      
-				</div>
-			</form>
-			<br />
-			<form id="cart" method="post" action="Servlet">
-                    <a href="#" id="imgCart">
-                    	<img  src="cart.png" height="100px" width="100px">
-                    	<input type="radio" id="button32" value="goToCart" name="myCart" />
-                    </a>
-             </form>
-		</header>
-
-		<nav>
-			<ul>
+                    Password: <input type="password" name="passw" /> <br /> <br />
+                    <button type="submit" value="logIn" name="logIn">Login</button>
+                    <button type="submit" value="logOut" name="logOut">Logout</button><br><br>
+                    <a href="Registration.html">Register</a>
+                    </form>
+                    <br>
+                    ${input! "User: Guest"}
+                    
+                </div>
+        
+        </header>
+       
+			<nav>
+				<ul>
 				<form id="console" method="post" action="Servlet">
 					<li><a href="#ps4" onclick="myFunction()">PS4</a></li>
 					<li><a href="#news" onclick="myFunction2()">PS3</a><li>
@@ -69,15 +61,15 @@
                     <input type="radio" id="button11" value="GameCube" name="myConsole" />
                     <input type="radio" id="button12" value="GBA" name="myConsole" />
                     <input type="radio" id="button13" value="GameBoy Color" name="myConsole" />
-                    <input type="radio" id="button14" value="N64" name="myConsole" />
+                    <input type="radio" id="button14" value ="N64" name="myConsole" />
 				</form>
-			</ul>
-		</nav>
-
-		<aside>
-			Select By Genre:
-			<ul>
-				<form id="genre" method="post" action="Servlet">
+				</ul>
+			</nav>
+        
+        <aside>
+            Select By Genre:
+            <ul>
+            	<form id="genre" method="post" action="Servlet">
 	                <li><a href="#news" onclick="myFunction15()">Action</a></li>
 	                <li><a href="#news" onclick="myFunction16()">Action-Adventure</a></li>
 	                <li><a href="#news" onclick="myFunction17()">Action Role Playing</a></li>
@@ -111,40 +103,20 @@
 	                <input type="radio" id="button29" value="Stealth" name="myGenre" />
 	                <input type="radio" id="button30" value="Tactical role-playing" name="myGenre" />
                 </form>
-			</ul>
-		</aside>
-
-		<article>
-		
-		<h1> ${game.getName()}</h1>
-					<img src=${game.getImage()} alt=${game.getName()} height="400" width="300" /><br />
-					${game.getName()} <br /> 
-					Publisher: ${game.getPub()} <br /> 
-					Developer: ${game.getDev()} <br /> 
-					Release Date: ${game.getDate()} <br /> 
-					Price: $${game.getPrice()} <br /> 
-					Select console:
-					<select>
-						<option value="PS4">PS4</option>
-						<option value="PS3">PS3</option>
-						<option value="XBOXONE">XBOXONE</option>
-						<option value="Xbox 360">Xbox 360</option>
-						<option value="PC">PC</option>
-					</select> <br />
-					
-					<#if game.getStock() < 1>
-						<button type="button" class ="block">Out of Stock</button>
-					<#else>
-						<form id="addToCart" method="post" action="Servlet">
-  							<button id="purchase" value = "${game.getId()}" name="gameToCart">Add to Cart</button>
-  						</form>
-					</#if>
-					
-					<br />
-		</article>
-		<footer> 
-		</footer>
-	</div>
+            </ul>
+        </aside>
+        
+        <article>
+            <h2>Recent releases:</h2>
+             
+        </article>
+        
+        <footer>
+           
+        </footer>
+        
+    </div>
+	
 	<script>
         document.getElementById("button").style.display = "none";
         document.getElementById("button2").style.display = "none";
@@ -297,19 +269,7 @@
             document.getElementById("button30").checked=true;
             document.getElementById("genre").submit();
 		}
-		var elements = document.getElementsByClassName("block");
-		for(var i=0; i < elements.length; i++){
-			elements[i].disabled=true;
-		}
-		var cart = document.getElementById("button32");
-    	cart.style.display = "none";
-    	document.getElementById("imgCart").onclick = function(){
-    		cart.checked=true;
-    		document.getElementById("cart").submit();
-    	}
-    	document.getElementById("purchase").onclick = function(){
-    		document.getElementById("addToCart").submit();
-    	}
 	</script>
-</body>
+    </body>
+
 </html>

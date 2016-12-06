@@ -24,6 +24,7 @@ import freemarker.template.DefaultObjectWrapperBuilder;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
+import javax.servlet.http.HttpSession;
 
 
 
@@ -47,7 +48,11 @@ public class Servlet extends HttpServlet {
     String myCart="";
     int totalPrice = 0;
     boolean login=false;
+    String logIn="";
+    String logOut="";
     String gameToCart="";
+    String register="";
+
     
     
     
@@ -109,6 +114,20 @@ public class Servlet extends HttpServlet {
 			gameToCart = request.getParameter("gameToCart");
 			gameToRemove = request.getParameter("gameToRemove");
 			myCart = request.getParameter("myCart");
+                        logIn = request.getParameter("logIn");
+                        logOut = request.getParameter("logOut");
+                        register = request.getParameter("register");
+                        String username ="";
+			username= request.getParameter("user");
+			String password ="";
+			password = request.getParameter("passw");
+                        
+                        String street = request.getParameter("street");
+                        String email = request.getParameter("email");
+                        String state = request.getParameter("state");
+                        String city = request.getParameter("city");
+                        String zip = request.getParameter("zip");
+                        
 			gameList.clear();
 			
 			if(console != null){
@@ -147,13 +166,42 @@ public class Servlet extends HttpServlet {
 				root.put("games", gamesForPurchase);
 				runTemplate(request, response, "cart.ftl");
 			}
-			
-			String username ="";
-			username= request.getParameter("user");
-			String password ="";
-			password = request.getParameter("passw");
-			logic.checkLoginInfo(username, password);	
-			gameToCart = null;
+                        else if(logIn !=null){
+                            String output = "";
+                        
+                            if(logic.checkLoginInfo(username, password)){
+                            	
+                            HttpSession session = request.getSession(); //creates a new session
+                            session.setAttribute("name", username);
+                            output = "User: " + username;
+                            System.out.println("Logged in");
+                        }
+                            else output = "Account information is incorrect";
+                            
+                            root.put("input",output);
+                            runTemplate(request, response, "index.ftl");
+                            
+                            
+                        }
+                        else if(logOut != null){
+                            String output ="User: Guest";
+                            response.setContentType("text/html");  
+                            PrintWriter out=response.getWriter();  
+                            HttpSession session=request.getSession();  
+                            session.invalidate();  
+                            root.put("input", output);
+                            runTemplate(request, response, "index.ftl");
+                        }
+                        else if(register != null){
+                            String output = "";
+                            
+                            if(logic.register(username, password, email, street, city, state, zip)) output = "Account created. Enter information above to sign in";
+                            else output = "Username is already taken";
+                            
+                            root.put("input", output);
+                            runTemplate(request, response, "index.ftl");
+
+                        }
 
 	} // doGet
 	/**

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Registration</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="pageStyle.css">
+    </head>
+    <body>
+        <form method="post" action="Servlet">
+            <div id="register">
+            <table>
+                <tr><td style="font-size: 4em">Register<td><td></td></tr>
+                <tr>
+                    <td>Username:</td> <td><input type="text" name="user" required/></td>
+                </tr>
+                <tr>
+                    <td>Password:</td> <td><input type="password" name="passw" required/></td>
+                </tr>
+                <tr>
+                    <td>Email:</td> <td><input type="text" name="email" required/></td>
+                </tr>
+                <tr>
+                    <td>Street Address:</td> <td><input type="text" name="street" required/></td>
+                </tr>
+                <tr>
+                    <td>City:</td> <td><input type="text" name="city" required/></td>
+                </tr>
+                <tr>
+                    <td>State:</td> <td><input type="text" name="state" required/></td>
+                </tr>
+                <tr>
+                    <td>Zip Code:</td> <td><input type="text" name="zip" required/></td>
+                </tr>
+                <tr>
+                <td></td>
+                <td><button type="submit" value="register" name="register">Register</button></td>
+                </tr>
+            </table>
+            </div>
+        </form>
+    </body>
+</html>

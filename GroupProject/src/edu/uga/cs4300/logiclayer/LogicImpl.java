@@ -37,24 +37,47 @@ public class LogicImpl {
 		persist = new PersistImpl();
 	} //constructor
         
+    
+    
+    public boolean register(String username, String password, String email, String street, String city, String state, String zip){
+       ResultSet info = persist.checkIfUserExists(username);
+       try {
+           if(info.next()){
+               return false;
+           }
+           else{
+               persist.addUser(username, email, password, street, city, 0, state);
+               return true;
+                }
+       }
+       catch (SQLException e) {
+        // TODO Auto-generated catch block
+	e.printStackTrace();
+        return false;
+        }
+    }
     /**
      * Takes info to get the current user, if either wrong, SQL throws exception
      * @param username 
      * @param password
+     * @return true if login valid
      */
-    public void checkLoginInfo(String username, String password){
+    public boolean checkLoginInfo(String username, String password){
             ResultSet info = persist.getUserForSignIn(username, password);
-                try {
-                    	if(info.next()){
-                    		User us = new User();
-                    		us.setUsername(info.getString("username"));
-                    		System.out.println(info.getString("username"));
-                    		System.out.println("Created user successfully");
-                    	}
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} 
+                 try {
+                     	if(info.next()){
+                     		User us = new User();
+                     		us.setUsername(info.getString("username"));
+                     		System.out.println(info.getString("username"));
+                     		System.out.println("Created user successfully");
+                                 return true;
+                     	}
+ 					} catch (SQLException e) {
+ 						// TODO Auto-generated catch block
+ 						e.printStackTrace();
+                                                 return false;
+ 					} 
+                 return false; 
         }//checkLoginInfo
         
     /**

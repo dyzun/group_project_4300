@@ -19,10 +19,15 @@
 			<img src="mainimg.png" id="main" />
 			<form method="post" action="Servlet">
 				<div id="login">
-					Username: <input type="text" name="username"> <br />
-					Password: <input type="text" name="password"><br /> 
-					<input type="submit" value="Login" />
-					
+					                     Username: <input type="text" name="user" /> <br />
+                      Password: <input type="password" name="passw" /> <br /> <br />
+                      <button type="submit" value="logIn" name="logIn">Login</button>
+                     <button type="submit" value="logOut" name="logOut">Logout</button><br><br>
+                     <a href="Registration.html">Register</a>
+                      </form>
+ +                    <br>
+ +                    ${input! "User: Guest"}
+                      
 				</div>
 			</form>
 			<br />

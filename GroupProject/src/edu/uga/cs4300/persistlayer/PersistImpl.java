@@ -72,6 +72,13 @@ public class PersistImpl {
 		ResultSet rs = access.retrieve(con,user);
 		return rs;
 	}//getUser
+    
+    public ResultSet checkIfUserExists(String user){
+         
+         String query = "SELECT * FROM user WHERE username = '"+user+"'";
+         ResultSet rs = access.retrieve(con, query);
+         return rs;
+     }
         
     /**
      * used to check login info
