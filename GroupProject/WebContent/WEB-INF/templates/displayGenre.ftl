@@ -3,10 +3,11 @@
 <head>
       <meta charset="UTF-8">
       <title>Games</title>
-		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="https://js.braintreegateway.com/web/3.6.0/js/client.min.js"></script>
 		<script src="https://js.braintreegateway.com/web/3.6.0/js/paypal.min.js"></script>
-		<script src="script.js"></script>
+		<script type="text/javascript" src="script.js"></script>
+                <#include "script.js">
 		<link rel="stylesheet" href="pageStyle.css">
 </head>
 

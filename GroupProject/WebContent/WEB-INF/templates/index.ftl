@@ -4,7 +4,10 @@
     	<title>Main Page</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="pageStyle.css">
-       
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <#include "script.js">
+        <script type="text/javascript" src="script.js"></script>
+
     </head>
     
     

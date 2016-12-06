@@ -3,10 +3,11 @@
 <head>
       <meta charset="UTF-8">
       <title>Games</title>
-		
+                <#include "script.js">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="https://js.braintreegateway.com/web/3.6.0/js/client.min.js"></script>
 		<script src="https://js.braintreegateway.com/web/3.6.0/js/paypal.min.js"></script>
-		<script src="script.js"></script>
+		<script type="text/javascript" src="script.js"></script>
 		<link rel="stylesheet" href="pageStyle.css">
 </head>
 
@@ -142,7 +143,7 @@
 		<footer> 
 		</footer>
 	</div>
-	<script>
+	<!--<script>
         document.getElementById("button").style.display = "none";
         document.getElementById("button2").style.display = "none";
         document.getElementById("button3").style.display = "none";
@@ -312,6 +313,6 @@
     		cart.checked=true;
     		document.getElementById("cart").submit();
     	}
-	</script>
+	</script>-->
 </body>
 </html>

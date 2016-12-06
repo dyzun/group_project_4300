@@ -1,161 +1,190 @@
 $(document).ready(function(){
+    
+        $("#paypal-button").click(function() {
+            $.ajax({
+                type: "POST",
+                url: "Servlet",
+                data: "purchase=true",
+                success: function() {
+                },
+                error: function()
+                {
+                    alert("Error");
+                }
+            });
+        });
+         $("#allgames").load(function() {
+            $.ajax({
+                type: "POST",
+                url: "Servlet",
+                data: "console=all",
+                success: function(output) {
+                    $("#allgames").html(output);
+                },
+                error: function()
+                {
+                    alert("Error");
+                }
+            });
+        });
+    
    
-	document.getElementById("button").style.display = "none";
-    document.getElementById("button2").style.display = "none";
-    document.getElementById("button3").style.display = "none";
-    document.getElementById("button4").style.display = "none";
-    document.getElementById("button5").style.display = "none";
-    document.getElementById("button6").style.display = "none";
-    document.getElementById("button7").style.display = "none";
-    document.getElementById("button8").style.display = "none";
-    document.getElementById("button9").style.display = "none";
-    document.getElementById("button10").style.display = "none";
-    document.getElementById("button11").style.display = "none";
-    document.getElementById("button12").style.display = "none";
-    document.getElementById("button13").style.display = "none";
-    document.getElementById("button14").style.display = "none";
-    document.getElementById("button15").style.display = "none";
-    document.getElementById("button16").style.display = "none";
-    document.getElementById("button17").style.display = "none";
-    document.getElementById("button18").style.display = "none";
-    document.getElementById("button19").style.display = "none";
-    document.getElementById("button20").style.display = "none";
-    document.getElementById("button21").style.display = "none";
-    document.getElementById("button22").style.display = "none";
-    document.getElementById("button23").style.display = "none";
-    document.getElementById("button24").style.display = "none";
-    document.getElementById("button25").style.display = "none";
-    document.getElementById("button26").style.display = "none";
-    document.getElementById("button27").style.display = "none";
-    document.getElementById("button28").style.display = "none";
-    document.getElementById("button29").style.display = "none";
-    document.getElementById("button30").style.display = "none";
+    $("#button").style.display = "none";
+    $("#button2").style.display = "none";
+    $("#button3").style.display = "none";
+    $("#button4").style.display = "none";
+    $("#button5").style.display = "none";
+    $("#button6").style.display = "none";
+    $("#button7").style.display = "none";
+    $("#button8").style.display = "none";
+    $("#button9").style.display = "none";
+    $("#button10").style.display = "none";
+    $("#button11").style.display = "none";
+    $("#button12").style.display = "none";
+    $("#button13").style.display = "none";
+    $("#button14").style.display = "none";
+    $("#button15").style.display = "none";
+    $("#button16").style.display = "none";
+    $("#button17").style.display = "none";
+    $("#button18").style.display = "none";
+    $("#button19").style.display = "none";
+    $("#button20").style.display = "none";
+    $("#button21").style.display = "none";
+    $("#button22").style.display = "none";
+    $("#button23").style.display = "none";
+    $("#button24").style.display = "none";
+    $("#button25").style.display = "none";
+    $("#button26").style.display = "none";
+    $("#button27").style.display = "none";
+    $("#button28").style.display = "none";
+    $("#button29").style.display = "none";
+    $("#button30").style.display = "none";
     
 	function myFunction() {
-        document.getElementById("button").checked=true;
-        document.getElementById("console").submit();
+        $("#button").checked=true;
+        $("#console").submit();
 	}
     function myFunction2() {
-        document.getElementById("button2").checked=true;
-        document.getElementById("console").submit();
+        $("#button2").checked=true;
+        $("#console").submit();
 	}
     function myFunction3() {
-        document.getElementById("button3").checked=true;
-        document.getElementById("console").submit();
+        $("#button3").checked=true;
+        $("#console").submit();
 	}
     function myFunction4() {
-        document.getElementById("button4").checked=true;
-        document.getElementById("console").submit();
+        $("#button4").checked=true;
+        $("#console").submit();
 	}
     function myFunction5() {
-        document.getElementById("button5").checked=true;
-        document.getElementById("console").submit();
+        $("#button5").checked=true;
+        $("#console").submit();
 	}
     function myFunction6() {
-        document.getElementById("button6").checked=true;
-        document.getElementById("console").submit();
+        $("#button6").checked=true;
+        $("#console").submit();
 	}
     function myFunction7() {
-        document.getElementById("button7").checked=true;
-        document.getElementById("console").submit();
+        $("#button7").checked=true;
+        $("#console").submit();
 	}
     function myFunction8() {
-        document.getElementById("button8").checked=true;
-        document.getElementById("console").submit();
+        $("#button8").checked=true;
+        $("#console").submit();
 	}
     function myFunction9() {
-        document.getElementById("button9").checked=true;
-        document.getElementById("console").submit();
+        $("#button9").checked=true;
+        $("#console").submit();
 	}
     function myFunction10() {
-        document.getElementById("button10").checked=true;
-        document.getElementById("console").submit();
+        $("#button10").checked=true;
+        $("#console").submit();
 	}
     function myFunction11() {
-        document.getElementById("button11").checked=true;
-        document.getElementById("console").submit();
+        $("#button11").checked=true;
+        $("#console").submit();
 	}
     function myFunction12() {
-        document.getElementById("button12").checked=true;
-        document.getElementById("console").submit();
+        $("#button12").checked=true;
+        $("#console").submit();
 	}
     function myFunction13() {
-        document.getElementById("button13").checked=true;
-        document.getElementById("console").submit();
+        $("#button13").checked=true;
+        $("#console").submit();
 	}
     function myFunction14() {
-        document.getElementById("button14").checked=true;
-        document.getElementById("console").submit();
+        $("#button14").checked=true;
+        $("#console").submit();
 	}
     function myFunction15() {
-        document.getElementById("button15").checked=true;
-        document.getElementById("genre").submit();
+        $("#button15").checked=true;
+        $("#genre").submit();
 	}
     function myFunction16() {
-        document.getElementById("button16").checked=true;
-        document.getElementById("genre").submit();
+        $("#button16").checked=true;
+        $("#genre").submit();
 	}
     function myFunction17() {
-        document.getElementById("button17").checked=true;
-        document.getElementById("genre").submit();
+        $("#button17").checked=true;
+        $("#genre").submit();
 	}
     function myFunction18() {
-        document.getElementById("button18").checked=true;
-        document.getElementById("genre").submit();
+        $("#button18").checked=true;
+        $("#genre").submit();
 	}
     function myFunction19() {
-        document.getElementById("button19").checked=true;
-        document.getElementById("genre").submit();
+        $("#button19").checked=true;
+        $("#genre").submit();
 	}
     function myFunction20() {
-        document.getElementById("button20").checked=true;
-        document.getElementById("genre").submit();
+        $("#button20").checked=true;
+        $("#genre").submit();
 	}
     function myFunction21() {
-        document.getElementById("button21").checked=true;
-        document.getElementById("genre").submit();
+        $("#button21").checked=true;
+        $("#genre").submit();
 	}
     function myFunction22() {
-        document.getElementById("button22").checked=true;
-        document.getElementById("genre").submit();
+        $("#button22").checked=true;
+        $("#genre").submit();
 	}
     function myFunction23() {
-        document.getElementById("butto23").checked=true;
-        document.getElementById("genre").submit();
+        $("#butto23").checked=true;
+        $("#genre").submit();
 	}
     function myFunction24() {
-        document.getElementById("button24").checked=true;
-        document.getElementById("genre").submit();
+        $("#button24").checked=true;
+        $("#genre").submit();
 	}
     function myFunction25() {
-        document.getElementById("button25").checked=true;
-        document.getElementById("genre").submit();
+        $("#button25").checked=true;
+        $("#genre").submit();
 	}
     function myFunction26() {
-        document.getElementById("button26").checked=true;
-        document.getElementById("genre").submit();
+        $("#button26").checked=true;
+        $("#genre").submit();
 	}
     function myFunction27() {
-        document.getElementById("button27").checked=true;
-        document.getElementById("genre").submit();
+        $("#button27").checked=true;
+        $("#genre").submit();
 	}
     function myFunction28() {
-        document.getElementById("button28").checked=true;
-        document.getElementById("genre").submit();
+        $("#button28").checked=true;
+        $("#genre").submit();
 	}
     function myFunction29() {
-        document.getElementById("button29").checked=true;
-        document.getElementById("genre").submit();
+        $("#button29").checked=true;
+        $("#genre").submit();
 	}
     function myFunction30() {
-        document.getElementById("button30").checked=true;
-        document.getElementById("genre").submit();
+        $("#button30").checked=true;
+        $("#genre").submit();
 	}
 	
-    var cart = document.getElementById("button32");
+    var cart = $("#button32");
 	cart.style.display = "none";
-	document.getElementById("imgCart").onclick = function(){
+	$("#imgCart").onclick = function(){
 		cart.checked=true;
-		document.getElementById("cart").submit();
-	}
-})
+		$("#cart").submit();
+	};
+});

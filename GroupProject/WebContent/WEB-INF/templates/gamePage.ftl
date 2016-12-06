@@ -6,7 +6,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="https://js.braintreegateway.com/web/3.6.0/js/client.min.js"></script>
 		<script src="https://js.braintreegateway.com/web/3.6.0/js/paypal.min.js"></script>
-		<script src="script.js"></script>
+		<script type="text/javascript" src="script.js"></script>
+                <#include "script.js">
 		<link rel="stylesheet" href="pageStyle.css">
 </head>
 
@@ -141,10 +142,10 @@
  						<br />
  					</#list>
  					<form id="subReview" method="post" action="Servlet" onsubmit="return mySubmitFunction()">
- 						<textarea id="textA" rows="4" cols="50" name="myReview">
+ 						<textarea id="textA" rows="4" cols="50" name="myReview" required>
  						</textarea>
  						<br />
- 						Score :<input id="myScore" type="number" name="score" min="1" max="10" />/10
+ 						Score :<input id="myScore" type="number" name="score" min="1" max="10" required />/10
  						<br />
  						<button type="submit" value="${game.getId()}" id="submitReview" name="idForReview">Submit your Review</button>
  					</form>

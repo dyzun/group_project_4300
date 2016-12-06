@@ -3,7 +3,7 @@
 <head>
       <meta charset="UTF-8">
       <title>Games</title>
-		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="https://js.braintreegateway.com/web/3.6.0/js/client.min.js"></script>
 		<script src="https://js.braintreegateway.com/web/3.6.0/js/paypal.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
@@ -15,7 +15,7 @@
 			<img src="mainimg.png" id="main" />
 			<form method="post" action="Servlet">
 				<div id="login">
-					                     Username: <input type="text" name="user" /> <br />
+                      Username: <input type="text" name="user" /> <br />
                       Password: <input type="password" name="passw" /> <br /> <br />
                       <button type="submit" value="logIn" name="logIn">Login</button>
                      <button type="submit" value="logOut" name="logOut">Logout</button><br><br>
@@ -170,7 +170,6 @@
  						onAuthorize : function(data, actions) {
  							return actions.payment.execute().then(function() {
  								// Show a success page to the buyer
-                                                                
                                                                 document.location.href = 'http://localhost:8080/WEB-INF/index.html';
  							});
  						}
@@ -180,7 +179,7 @@
 		<footer> 
 		</footer>
 	</div>
-	<script>
+	<!--<script>
         document.getElementById("button").style.display = "none";
         document.getElementById("button2").style.display = "none";
         document.getElementById("button3").style.display = "none";
@@ -342,6 +341,6 @@
     		cart.checked=true;
     		document.getElementById("cart").submit();
     	}
-	</script>
+	</script>-->
 </body>
 </html>

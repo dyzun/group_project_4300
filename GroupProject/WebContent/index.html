@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="pageStyle.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script type='text/javascript' src='myScript.js'></script>
+        <script type='text/javascript' src='script.js'></script>
     </head>
     
     
@@ -117,7 +117,7 @@
         
         <article>
             <h2>All Games:</h2>
-             
+            <div id="allgames"></div>
         </article>
         
         <footer>
@@ -126,8 +126,8 @@
         
     </div>
 	
-	<script>
-        document.getElementById("button").style.display = "none";
+<script>
+    document.getElementById("button").style.display = "none";
     document.getElementById("button2").style.display = "none";
     document.getElementById("button3").style.display = "none";
     document.getElementById("button4").style.display = "none";
@@ -286,7 +286,7 @@
 	document.getElementById("imgCart").onclick = function(){
 		cart.checked=true;
 		document.getElementById("cart").submit();
-	}
+	};
 	</script>
     </body>
 

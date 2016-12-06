@@ -59,10 +59,8 @@ public class Servlet extends HttpServlet {
     String myReview="";
     String score="";
     String idForReview="";
+    boolean purchase=false;
 
-    
-    
-    
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -255,6 +253,16 @@ public class Servlet extends HttpServlet {
  				root.put("reviews", revList);
  				runTemplate(request, response, "gamePage.ftl");
  			}
+                        else if(purchase){
+                            gamesForPurchase.clear();
+ 				gamesForPurchase.addAll(logic.getCart(user_id));
+ 				for(int i = 0; i < gamesForPurchase.size(); i++){
+ 					logic.updateStock(gamesForPurchase.get(i).getId());
+ 				}
+                            logic.clearCart(user_id);
+                            gamesForPurchase.clear();
+                            purchase = false;
+                        }
 
 	} // doGet
 	/**
