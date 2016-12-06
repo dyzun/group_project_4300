@@ -37,6 +37,11 @@ public class LogicImpl {
 		persist = new PersistImpl();
 	} //constructor
         
+    /**
+     * used to get the id of a user given username
+     * @param username
+     * @return if of user
+     */
     public int usernameToId(String username){
     ResultSet info = persist.checkIfUserExists(username);
     try{
@@ -51,6 +56,17 @@ public class LogicImpl {
     return 0;
 }
     
+    /**
+     * used to add user if not already in table
+     * @param username
+     * @param password
+     * @param email
+     * @param street
+     * @param city
+     * @param state
+     * @param zip
+     * @return true if new user created false otherwise
+     */
     public boolean register(String username, String password, String email, String street, String city, String state, String zip){
        ResultSet info = persist.checkIfUserExists(username);
        try {
@@ -123,7 +139,12 @@ public class LogicImpl {
 		return gameList;
 	}//getAllGames
 
-	public Game getGameById(int id){
+    /**
+     * used to return a specific game
+     * @param id
+     * @return game based on it
+     */
+    public Game getGameById(int id){
 		Game gm = new Game();
 		//return a result set for a game
 		ResultSet game = persist.getGamesById(id);
@@ -228,6 +249,11 @@ public class LogicImpl {
 		return gameList;
 	}//getGamesByConsole
     
+    /**
+     * used to get all consoles of a game given the id
+     * @param game_id
+     * @return list of all consoles
+     */
     public ArrayList<String> getConsolesByGame(int game_id){
         consoleList.clear();
         ResultSet consoles = persist.getConsoles(game_id);
@@ -379,16 +405,25 @@ public class LogicImpl {
      * used to remove game per cart
      * @param user_id
      * @param game_id
+     * @return # of items removed
      */
     public int removeFromCart(int user_id, int game_id){
             int update =persist.removeFromCart(user_id, game_id);
             return update;
         }
     
+    /**
+     * used to update the stock of a game
+     * @param game_id
+     */
     public void updateStock(int game_id){
         persist.updateStock(game_id);
     }
     
+    /**
+     * used to remove all items from a users cart
+     * @param user_id
+     */
     public void clearCart(int user_id){
         persist.clearCart(user_id);
     }

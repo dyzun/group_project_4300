@@ -73,6 +73,11 @@ public class PersistImpl {
 		return rs;
 	}//getUser
     
+    /**
+     * used to return all value on a specific user based on username
+     * @param user
+     * @return single row of user table based on user_id
+     */
     public ResultSet checkIfUserExists(String user){
          
          String query = "SELECT * FROM user WHERE username = '"+user+"'";
@@ -183,6 +188,10 @@ public class PersistImpl {
 		int update = access.update(con,reviews);
 	}//getReviews
 		
+    /**
+     * used to decrement the #of games in stock
+     * @param game_id
+     */
     public void updateStock(int game_id){
         String stock= "UPDATE `project_group`.`games` SET `stock` = stock-1 "
                 + "WHERE `id` = "+game_id+";";
