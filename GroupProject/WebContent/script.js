@@ -3,7 +3,7 @@ $(document).ready(function(){
         $("#paypal-button").click(function() {
             $.ajax({
                 type: "POST",
-                url: "Servlet",
+                url: "/Servlet",
                 data: "purchase=true",
                 success: function() {
                 },
@@ -16,7 +16,7 @@ $(document).ready(function(){
          $("#allgames").load(function() {
             $.ajax({
                 type: "POST",
-                url: "Servlet",
+                url: "/Servlet",
                 data: "console=all",
                 success: function(output) {
                     $("#allgames").html(output);
@@ -27,7 +27,34 @@ $(document).ready(function(){
                 }
             });
         });
-    
+    $("#logIn").click(function() {
+            $.ajax({
+                type: "POST",
+                url: "/Servlet",
+                data: "logIn=" + $("#logIn").val()+"username="+ $("#user").val() +"password="+$("#passw").val(),
+                success: function(output) {
+                    $("#loggedIn").html(output);
+                },
+                error: function()
+                {
+                    alert("Error");
+                }
+            });
+        });
+        $("#logOut").click(function() {
+            $.ajax({
+                type: "POST",
+                url: "/Servlet",
+                data: "logOut=" + $("#logOut").val(),
+                success: function(output) {
+                    $("#loggedIn").html(output);
+                },
+                error: function()
+                {
+                    alert("Error");
+                }
+            });
+        });
    
     $("#button").style.display = "none";
     $("#button2").style.display = "none";

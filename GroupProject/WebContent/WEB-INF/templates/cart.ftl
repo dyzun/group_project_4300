@@ -23,6 +23,7 @@
                       </form>
                      <br>
                      ${input! "User: Guest"}
+                      <div id="loggedIn"></div>
                       
                   </div>
   
