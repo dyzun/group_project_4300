@@ -17,9 +17,12 @@ div.elements {
     margin: 10px;
 
 }
+#cart{
+    float:right;
+}
 
 #login{
-    float: right;
+    float: left;
     width:25%;
     margin:10px;
 

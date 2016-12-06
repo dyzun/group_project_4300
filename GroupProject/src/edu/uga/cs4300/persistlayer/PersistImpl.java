@@ -118,11 +118,13 @@ public class PersistImpl {
      * used to remove item to cart based on user id and game id
      * @param user_id
      * @param game_id
+     * @return 
      */
-    public void removeFromCart(int user_id, int game_id){
+    public int removeFromCart(int user_id, int game_id){
 		String cart = "DELETE FROM `project_group`.`cart` WHERE user_id = '"+user_id+"'"
                         + " AND game_id = '"+game_id+"'";
 		int update = access.delete(con,cart);
+                return update;
 	}//removeFromCart
     
         /**

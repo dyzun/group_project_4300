@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.uga.cs4300.logiclayer.LogicImpl;
 import edu.uga.cs4300.objectlayer.Game;
+import edu.uga.cs4300.objectlayer.Review;
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapperBuilder;
 import freemarker.template.Template;
@@ -39,6 +40,7 @@ public class Servlet extends HttpServlet {
 	Configuration cfg = null;
     Map<String, Object> root = new HashMap<String, Object>();
     ArrayList<Game> gameList = new ArrayList<Game>();
+    ArrayList<Review> revList = new ArrayList<Review>();
     ArrayList<Game> gamesForPurchase = new ArrayList<Game>();
     private String templateDir = "/WEB-INF/templates";
     String console="";
@@ -52,6 +54,11 @@ public class Servlet extends HttpServlet {
     String logOut="";
     String gameToCart="";
     String register="";
+    int user_id=0;
+    String clearCart="";
+    String myReview="";
+    String score="";
+    String idForReview="";
 
     
     
@@ -127,6 +134,10 @@ public class Servlet extends HttpServlet {
                         String state = request.getParameter("state");
                         String city = request.getParameter("city");
                         String zip = request.getParameter("zip");
+                        clearCart= request.getParameter("clearCart");
+ 			myReview = request.getParameter("myReview");
+ 			score= request.getParameter("score");
+ 			idForReview = request.getParameter("idForReview");
                         
 			gameList.clear();
 			
@@ -143,25 +154,34 @@ public class Servlet extends HttpServlet {
 				runTemplate(request, response,"displayGenre.ftl");
 			}
 			else if(gameId != null){
+                            	revList.clear();
 				int id = Integer.parseInt(gameId);
 				Game gm = logic.getGameById(id);
+                                revList.addAll(logic.getReviewsByGame(id));
 				root.put("game", gm);
+                                root.put("reviews", revList);
 				runTemplate(request, response, "gamePage.ftl");
 			}
                         else if(gameToCart != null){
+                                totalPrice=0;
+ 				gamesForPurchase.clear();
 				int id = Integer.parseInt(gameToCart);
-				System.out.println(gameToCart);
-				gameToCart = null;
-				System.out.println(gameToCart);
-				Game gm = logic.getGameById(id);
-				gamesForPurchase.add(gm);
-				totalPrice += gm.getPrice();
-				System.out.println("I ran");
+				logic.addToCart(user_id, id);
+ 				gamesForPurchase.addAll(logic.getCart(user_id));
+ 				for(int i = 0; i < gamesForPurchase.size(); i++){
+ 					totalPrice += gamesForPurchase.get(i).getPrice();
+ 				}
 				root.put("totalPrice", totalPrice);
 				root.put("games", gamesForPurchase);
 				runTemplate(request, response, "cart.ftl");
 			}
 			else if(myCart != null){
+                               totalPrice=0;
+ 				gamesForPurchase.clear();
+ 				gamesForPurchase.addAll(logic.getCart(user_id));
+ 				for(int i = 0; i < gamesForPurchase.size(); i++){
+ 					totalPrice += gamesForPurchase.get(i).getPrice();
+ 				}
 				root.put("totalPrice", totalPrice);
 				root.put("games", gamesForPurchase);
 				runTemplate(request, response, "cart.ftl");
@@ -173,6 +193,7 @@ public class Servlet extends HttpServlet {
                             	
                             HttpSession session = request.getSession(); //creates a new session
                             session.setAttribute("name", username);
+                            session.setAttribute("user_id",user_id);
                             output = "User: " + username;
                             System.out.println("Logged in");
                         }
@@ -180,8 +201,6 @@ public class Servlet extends HttpServlet {
                             
                             root.put("input",output);
                             runTemplate(request, response, "index.ftl");
-                            
-                            
                         }
                         else if(logOut != null){
                             String output ="User: Guest";
@@ -194,14 +213,43 @@ public class Servlet extends HttpServlet {
                         }
                         else if(register != null){
                             String output = "";
-                            
                             if(logic.register(username, password, email, street, city, state, zip)) output = "Account created. Enter information above to sign in";
                             else output = "Username is already taken";
-                            
                             root.put("input", output);
                             runTemplate(request, response, "index.ftl");
-
-                        }
+                       }else if(gameToRemove != null){
+ 				totalPrice=0;
+ 				gamesForPurchase.clear();
+ 				int id = Integer.parseInt(gameToRemove);
+ 				int update =logic.removeFromCart(user_id, id);
+ 				System.out.println("Update is: "+ update);
+ 				gamesForPurchase.addAll(logic.getCart(user_id));
+ 				for(int i = 0; i < gamesForPurchase.size(); i++){
+ 					totalPrice += gamesForPurchase.get(i).getPrice();
+ 				}
+ 				root.put("totalPrice", totalPrice);
+ 				root.put("games", gamesForPurchase);
+ 				runTemplate(request, response, "cart.ftl");
+ 			}
+ 			else if(clearCart != null){
+ 				logic.clearCart(user_id);
+ 				totalPrice=0;
+ 				gamesForPurchase.clear();
+ 				root.put("totalPrice", totalPrice);
+ 				root.put("games", gamesForPurchase);
+ 				runTemplate(request, response, "cart.ftl");
+ 			}
+ 			else if(myReview != null && score != null){
+ 				revList.clear();
+ 				int num = Integer.parseInt(score);
+ 				int gId = Integer.parseInt(idForReview);
+ 				logic.addReview(gId, myReview, user_id, num);
+ 				revList.addAll(logic.getReviewsByGame(gId));
+ 				Game gm = logic.getGameById(gId);
+ 				root.put("game", gm);
+ 				root.put("reviews", revList);
+ 				runTemplate(request, response, "gamePage.ftl");
+ 			}
 
 	} // doGet
 	/**

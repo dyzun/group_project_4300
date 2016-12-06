@@ -6,7 +6,7 @@
 		
 		<script src="https://js.braintreegateway.com/web/3.6.0/js/client.min.js"></script>
 		<script src="https://js.braintreegateway.com/web/3.6.0/js/paypal.min.js"></script>
-		<script src="script.js"></script>
+		<script type="text/javascript" src="script.js"></script>
 		<link rel="stylesheet" href="pageStyle.css">
 </head>
 <body>
@@ -31,7 +31,7 @@
 			</form>
 			<br />
 			<form id="cart" method="post" action="Servlet">
-                    <a href="#" id="imgCart">
+                        <a href="#" id="imgCart">
                     	<img  src="cart.png" height="100px" width="100px">
                     	<input type="radio" id="button32" value="goToCart" name="myCart" />
                     </a>
@@ -120,11 +120,18 @@
 					Developer: ${game.getDev()} <br /> 
 					Release Date: ${game.getDate()} <br /> 
 					Price: $${game.getPrice()} <br /> 
+					Description: ${game.getDescription()} <br />
+
 					<form method="post" action="Servlet">
 						<button type="submit" value="${game.getId()}" name="gameToRemove">Remove</button>
 					</form>
 					<br />
 		</#list>
+<br />
+                <form method="post" action="Servlet">
+ 			<button type="submit" value="clear" name="clearCart">Clear Cart</button>
+ 		</form>
+<br />
 		Total: $${totalPrice} <br />
 		Checkout: 
                 <div id="paypal-button"></div>
@@ -163,6 +170,7 @@
  						onAuthorize : function(data, actions) {
  							return actions.payment.execute().then(function() {
  								// Show a success page to the buyer
+                                                                
                                                                 document.location.href = 'http://localhost:8080/WEB-INF/index.html';
  							});
  						}
