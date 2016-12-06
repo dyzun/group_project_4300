@@ -346,5 +346,9 @@ public class LogicImpl {
     public void removeFromCart(int user_id, int game_id){
             persist.removeFromCart(user_id, game_id);
         }
+    
+    public void updateStock(int game_id){
+        persist.updateStock(game_id);
+    }
 
 }

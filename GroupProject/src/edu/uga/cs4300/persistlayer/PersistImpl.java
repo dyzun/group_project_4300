@@ -114,7 +114,7 @@ public class PersistImpl {
      */
     public void removeFromCart(int user_id, int game_id){
 		String cart = "DELETE FROM `project_group`.`cart` WHERE user_id = '"+user_id+"'"
-                        + " AND game_id = '"+3+"'";
+                        + " AND game_id = '"+game_id+"'";
 		int update = access.delete(con,cart);
 	}//removeFromCart
 	
@@ -165,4 +165,9 @@ public class PersistImpl {
 		int update = access.update(con,reviews);
 	}//getReviews
 		
+    public void updateStock(int game_id){
+        String stock= "UPDATE `project_group`.`games` SET `stock` = stock-1 "
+                + "WHERE `id` = "+game_id+";";
+        int update = access.update(con,stock);
+    }
 }
