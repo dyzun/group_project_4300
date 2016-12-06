@@ -117,7 +117,7 @@
 
 		<article>
 		
-			<h1> Games on ${console}</h1>
+			<h1> ${console} games</h1>
 			
 		
 		<form id="game" method="post" action="Servlet">

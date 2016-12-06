@@ -57,7 +57,7 @@
 					<li><a href="#news" onclick="myFunction12()">GBA</a><li>
 					<li><a href="#news" onclick="myFunction13()">GameBoy Color</a><li>
 					<li><a href="#news" onclick="myFunction14()">N64</a><li>
-                    <input type="radio" id="button" value="Playstation 4" name="myConsole" />
+                    <input type="radio" id="button" value="all" name="myConsole" />
                     <input type="radio" id="button2" value="Playstation 3" name="myConsole" />
                     <input type="radio" id="button3" value="Playstation 2" name="myConsole" />
                     <input type="radio" id="button4" value="Xbox One" name="myConsole" />
@@ -116,7 +116,7 @@
         </aside>
         
         <article>
-            <h2>Recent releases:</h2>
+            <h2>All Games:</h2>
              
         </article>
         
@@ -157,6 +157,8 @@
     document.getElementById("button28").style.display = "none";
     document.getElementById("button29").style.display = "none";
     document.getElementById("button30").style.display = "none";
+    document.getElementById("button").checked=true;
+    document.getElementById("console").submit();
     
 	function myFunction() {
         document.getElementById("button").checked=true;

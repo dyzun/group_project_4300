@@ -142,7 +142,12 @@ public class Servlet extends HttpServlet {
 			gameList.clear();
 			
 			if(console != null){
-				gameList.addAll(logic.getGamesByConsole(console));
+				if(console.equalsIgnoreCase("All")){
+ 					gameList.addAll(logic.getAllGames());
+ 				}
+ 				else {
+ 					gameList.addAll(logic.getGamesByConsole(console));
+ 				}
 				root.put("games", gameList);
 				root.put("console", console);
 				runTemplate(request, response,"displayGames.ftl");
@@ -190,11 +195,11 @@ public class Servlet extends HttpServlet {
                             String output = "";
                         
                             if(logic.checkLoginInfo(username, password)){
-                            	
+                                int user_id = logic.usernameToId(username);                            	
                             HttpSession session = request.getSession(); //creates a new session
                             session.setAttribute("name", username);
                             session.setAttribute("user_id",user_id);
-                            output = "User: " + username;
+                            output = "User: " + username ;
                             System.out.println("Logged in");
                         }
                             else output = "Account information is incorrect";

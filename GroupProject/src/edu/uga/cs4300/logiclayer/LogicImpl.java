@@ -37,7 +37,19 @@ public class LogicImpl {
 		persist = new PersistImpl();
 	} //constructor
         
-    
+    public int usernameToId(String username){
+    ResultSet info = persist.checkIfUserExists(username);
+    try{
+        while(info.next()){
+            int id = info.getInt("id");
+            return id;
+        }
+    }catch (SQLException e) {
+        // TODO Auto-generated catch block
+	e.printStackTrace();
+        }
+    return 0;
+}
     
     public boolean register(String username, String password, String email, String street, String city, String state, String zip){
        ResultSet info = persist.checkIfUserExists(username);
@@ -68,6 +80,7 @@ public class LogicImpl {
                      	if(info.next()){
                      		User us = new User();
                      		us.setUsername(info.getString("username"));
+                                us.setUser_id(info.getInt("id"));
                      		System.out.println(info.getString("username"));
                      		System.out.println("Created user successfully");
                                  return true;
@@ -252,6 +265,7 @@ public class LogicImpl {
 
 		return userList;
 	}//getUser
+    
    
     /**
      * used to import user into table
