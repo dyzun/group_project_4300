@@ -126,6 +126,7 @@
  					data-version-4></script>
  
  				<script>
+                                    var totalPriceJS="<%=totalPrice%>";
  					paypal.Button.render({
  
  						env : 'sandbox', // Optional: specify 'sandbox' environment
@@ -143,7 +144,7 @@
  							return paypal.rest.payment.create(env, client, {
  								transactions : [ {
  									amount : {
- 										total : ,
+ 										total : ${totalPrice},
  										currency : 'USD'
  									}
  								//TODO change to game price when dynamically generated
