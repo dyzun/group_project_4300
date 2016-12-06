@@ -126,7 +126,6 @@
  					data-version-4></script>
  
  				<script>
-                                    var totalPriceJS="<%=totalPrice%>";
  					paypal.Button.render({
  
  						env : 'sandbox', // Optional: specify 'sandbox' environment
@@ -157,6 +156,7 @@
  						onAuthorize : function(data, actions) {
  							return actions.payment.execute().then(function() {
  								// Show a success page to the buyer
+                                                                document.location.href = 'http://localhost:8080/WEB-INF/index.html';
  							});
  						}
  					}, '#paypal-button');
